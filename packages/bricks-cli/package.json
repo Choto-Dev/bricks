@@ -1,0 +1,34 @@
+{
+  "name": "@choto/bricks-cli",
+  "version": "0.0.1",
+  "description": "Add bricks ui and components",
+  "type": "module",
+  "keywords": [
+    "bricks",
+    "cli",
+    "shadcn-ui"
+  ],
+  "author": "Rifat Khan <https://github.com/StepAsideLiL/>",
+  "license": "MIT",
+  "bin": {
+    "bricks-cli": "./dist/index.mjs"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "check-types": "tsc --noEmit",
+    "cli": "node ./dist/index.mjs",
+    "lint": "biome check --write .",
+    "pub:test": "npm unlink -g && npm link",
+    "pub:unlink": "npm unlink -g",
+    "start": "pnpm build && pnpm cli"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.0",
+    "@types/node": "^20",
+    "typescript": "^5",
+    "unbuild": "^3.6.1"
+  },
+  "dependencies": {
+    "commander": "^14.0.2"
+  }
+}
