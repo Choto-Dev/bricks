@@ -1,6 +1,20 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "bricks",
-  "homepage": "https://acme.com",
-  "items": []
+  "homepage": "",
+  "items": [
+    {
+      "name": "section",
+      "type": "registry:ui",
+      "title": "Section",
+      "description": "A component for most section in a page.",
+      "files": [
+        {
+          "path": "src/registry/default/bricks/section.tsx",
+          "type": "registry:ui",
+          "target": "component/bricks/section.tsx"
+        }
+      ]
+    }
+  ]
 }
