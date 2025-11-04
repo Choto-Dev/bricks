@@ -17,13 +17,17 @@
   },
   "javascript": {
     "formatter": {
-      "quoteStyle": "double"
+      "quoteStyle": "double",
+      "semicolons": "always"
     }
   },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
+      "performance": {
+        "noNamespaceImport": "off"
+      },
       "suspicious": {
         "noUnknownAtRules": "off"
       }
