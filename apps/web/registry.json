@@ -12,7 +12,7 @@
         {
           "path": "src/registry/default/bricks/section.tsx",
           "type": "registry:ui",
-          "target": "component/bricks/section.tsx"
+          "target": "components/bricks/section.tsx"
         }
       ]
     }
