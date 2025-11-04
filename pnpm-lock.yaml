@@ -42,8 +42,8 @@ importers:
         specifier: 19.2.0
         version: 19.2.0(react@19.2.0)
       shadcn:
-        specifier: 3.5.1-canary.0
-        version: 3.5.1-canary.0(@types/node@20.19.24)(typescript@5.9.2)
+        specifier: 3.5.0
+        version: 3.5.0(@types/node@20.19.24)(typescript@5.9.2)
       tailwind-merge:
         specifier: ^3.3.1
         version: 3.3.1
@@ -2474,8 +2474,8 @@ packages:
   setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
-  shadcn@3.5.1-canary.0:
-    resolution: {integrity: sha512-aw+JbFI0RxoxHdr2Q+vON6zCC6GggKQjOU1U/R1LNrNzDhXEnk6DKtdXZtN+Ej1oRadCAOV7yDMbi4jber/7Ig==}
+  shadcn@3.5.0:
+    resolution: {integrity: sha512-5f9tn7gHOiI8CqJ8LGrUEmX6dOivGgSbHkMCeOMCzxHZy9cPwyuRXt7ZyjwukO8QH9kGqi6oiKOpfvTXNGBP4g==}
     hasBin: true
 
   sharp@0.34.4:
@@ -5134,7 +5134,7 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadcn@3.5.1-canary.0(@types/node@20.19.24)(typescript@5.9.2):
+  shadcn@3.5.0(@types/node@20.19.24)(typescript@5.9.2):
     dependencies:
       '@antfu/ni': 25.0.0
       '@babel/core': 7.28.5
