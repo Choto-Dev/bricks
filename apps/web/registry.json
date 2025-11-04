@@ -10,7 +10,7 @@
       "description": "A component for most section in a page.",
       "files": [
         {
-          "path": "src/registry/default/bricks/section.tsx",
+          "path": "src/registry/bricks/components/section.tsx",
           "type": "registry:ui",
           "target": "components/bricks/section.tsx"
         }
