@@ -1,17 +1,33 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "bricks",
-  "homepage": "",
+  "homepage": "https://choto-bricks.vercel.app/",
   "items": [
     {
-      "name": "section",
+      "name": "bg-image",
       "type": "registry:ui",
+      "title": "Background Image",
+      "description": "Background image for using next-image",
+      "files": [
+        {
+          "path": "src/registry/bricks/ui/bg-image.tsx",
+          "type": "registry:ui",
+          "target": "components/bricks/bg-image.tsx"
+        }
+      ]
+    },
+    {
+      "name": "section",
+      "type": "registry:component",
       "title": "Section",
       "description": "A component for most section in a page.",
+      "registryDependencies": [
+        "https://choto-bricks.vercel.app/r/bg-image.json"
+      ],
       "files": [
         {
           "path": "src/registry/bricks/components/section.tsx",
-          "type": "registry:ui",
+          "type": "registry:component",
           "target": "components/bricks/section.tsx"
         }
       ]
