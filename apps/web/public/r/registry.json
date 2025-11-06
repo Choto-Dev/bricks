@@ -4,6 +4,23 @@
   "homepage": "https://choto-bricks.vercel.app/",
   "items": [
     {
+      "name": "article",
+      "type": "registry:component",
+      "title": "Article",
+      "description": "A Component for articles and blogs",
+      "css": {
+        "@plugin \"@tailwindcss/typography\"": {}
+      },
+      "devDependencies": ["@tailwindcss/typography"],
+      "files": [
+        {
+          "path": "src/registry/bricks/components/article.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/article.tsx"
+        }
+      ]
+    },
+    {
       "name": "bg-image",
       "type": "registry:ui",
       "title": "Background Image",

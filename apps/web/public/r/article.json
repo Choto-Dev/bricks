@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "article",
+  "type": "registry:component",
+  "title": "Article",
+  "description": "A Component for articles and blogs",
+  "devDependencies": [
+    "@tailwindcss/typography"
+  ],
+  "files": [
+    {
+      "path": "src/registry/bricks/components/article.tsx",
+      "content": "import type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ntype ArticleRootProps = React.ComponentPropsWithRef<\"article\">;\nfunction ArticleRoot(props: ArticleRootProps) {\n  return (\n    <article\n      {...props}\n      className={cn(\"prose mx-auto w-full max-w-2xl\", props.className)}\n    />\n  );\n}\n\ntype ArticleTitleProps = React.ComponentPropsWithRef<\"h1\">;\nfunction ArticleTitle(props: ArticleTitleProps) {\n  return <h1 {...props} />;\n}\n\ntype ArticleHeadingProps = React.ComponentPropsWithRef<\"h2\" | \"h3\" | \"h4\"> & {\n  heading?: \"big\" | \"medium\" | \"base\";\n};\nfunction ArticleHeading({ heading = \"base\", ...props }: ArticleHeadingProps) {\n  if (heading === \"big\") {\n    return <h2 {...props} />;\n  }\n  if (heading === \"medium\") {\n    return <h3 {...props} />;\n  }\n  if (heading === \"base\") {\n    return <h4 {...props} />;\n  }\n}\n\ntype ArticleParagraphProps = React.ComponentPropsWithRef<\"h1\">;\nfunction ArticleParagraph(props: ArticleParagraphProps) {\n  return <p {...props} />;\n}\n\nconst Root = ArticleRoot;\nconst Title = ArticleTitle;\nconst Heading = ArticleHeading;\nconst Paragraph = ArticleParagraph;\n\nexport { Root, Title, Heading, Paragraph };\n",
+      "type": "registry:component",
+      "target": "components/bricks/article.tsx"
+    }
+  ],
+  "css": {
+    "@plugin \"@tailwindcss/typography\"": {}
+  }
+}
