@@ -34,6 +34,22 @@
       ]
     },
     {
+      "name": "product-card",
+      "type": "registry:component",
+      "title": "Product Card",
+      "description": "A component to build product card",
+      "registryDependencies": [
+        "https://choto-bricks.vercel.app/r/bg-image.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/bricks/components/product-card.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/product-card.tsx"
+        }
+      ]
+    },
+    {
       "name": "section",
       "type": "registry:component",
       "title": "Section",
