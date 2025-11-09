@@ -22,13 +22,13 @@
     },
     {
       "name": "bg-image",
-      "type": "registry:ui",
+      "type": "registry:component",
       "title": "Background Image",
       "description": "Background image for using next-image",
       "files": [
         {
-          "path": "src/registry/bricks/ui/bg-image.tsx",
-          "type": "registry:ui",
+          "path": "src/registry/bricks/components/bg-image.tsx",
+          "type": "registry:component",
           "target": "components/bricks/bg-image.tsx"
         }
       ]
