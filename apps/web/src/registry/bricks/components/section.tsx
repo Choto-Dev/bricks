@@ -3,7 +3,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
 import { cn } from "@/lib/utils";
-import BGImage from "@/registry/bricks/ui/bg-image";
+import BGImage from "@/registry/bricks/components/bg-image";
 
 type TSectionContext = VariantProps<typeof sectionRootVariants>;
 const SectionContext = React.createContext<TSectionContext>({
