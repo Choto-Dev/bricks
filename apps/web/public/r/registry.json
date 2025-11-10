@@ -4,6 +4,20 @@
   "homepage": "https://choto-bricks.vercel.app/",
   "items": [
     {
+      "name": "appear",
+      "type": "registry:component",
+      "title": "Appear",
+      "description": "An animated component that slides in element",
+      "dependencies": ["@gsap/react", "@radix-ui/react-slot", "gsap"],
+      "files": [
+        {
+          "path": "src/registry/bricks/animated-components/appear.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/appear.tsx"
+        }
+      ]
+    },
+    {
       "name": "article",
       "type": "registry:component",
       "title": "Article",
