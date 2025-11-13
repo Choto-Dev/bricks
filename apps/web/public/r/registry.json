@@ -4,16 +4,16 @@
   "homepage": "https://choto-bricks.vercel.app/",
   "items": [
     {
-      "name": "appear",
+      "name": "split-text",
       "type": "registry:component",
-      "title": "Appear",
-      "description": "An animated component that slides in element",
+      "title": "Split Text",
+      "description": "A component that splits and animate text element.",
       "dependencies": ["@gsap/react", "@radix-ui/react-slot", "gsap"],
       "files": [
         {
-          "path": "src/registry/bricks/animated-components/appear.tsx",
+          "path": "src/registry/bricks/animated-components/split-text.tsx",
           "type": "registry:component",
-          "target": "components/bricks/appear.tsx"
+          "target": "components/bricks/split-text.tsx"
         }
       ]
     },
