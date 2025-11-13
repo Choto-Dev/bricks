@@ -32,7 +32,7 @@ export default function SplitTextAnimation({
   preset = "default",
   ...props
 }: SplitTextProps) {
-  const elementId = React.useId();
+  const ref = React.useRef(null);
 
   const newPreset = applyPreset(preset, {
     splitVars:
@@ -54,18 +54,17 @@ export default function SplitTextAnimation({
         : {
             y: 0,
             duration: 1,
-            stagger: 0.3,
           },
   });
 
   useGSAP(() => {
-    const splitText = SplitText.create(`#${elementId}`, newPreset.splitVars);
+    const splitText = SplitText.create(ref.current, newPreset.splitVars);
     gsap.fromTo(splitText.chars, newPreset.fromTween, newPreset.toTween);
   });
 
   const Comp = asChild ? Slot : "div";
 
-  return <Comp id={elementId} {...props} />;
+  return <Comp ref={ref} {...props} />;
 }
 
 function applyPreset(
