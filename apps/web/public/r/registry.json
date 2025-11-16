@@ -4,20 +4,6 @@
   "homepage": "https://choto-bricks.vercel.app/",
   "items": [
     {
-      "name": "split-text",
-      "type": "registry:component",
-      "title": "Split Text",
-      "description": "A component that splits and animate text element.",
-      "dependencies": ["@gsap/react", "@radix-ui/react-slot", "gsap"],
-      "files": [
-        {
-          "path": "src/registry/bricks/animated-components/split-text.tsx",
-          "type": "registry:component",
-          "target": "components/bricks/split-text.tsx"
-        }
-      ]
-    },
-    {
       "name": "article",
       "type": "registry:component",
       "title": "Article",
@@ -48,6 +34,20 @@
       ]
     },
     {
+      "name": "header",
+      "type": "registry:component",
+      "title": "Header",
+      "description": "A component for header.",
+      "dependencies": ["@radix-ui/react-slot"],
+      "files": [
+        {
+          "path": "src/registry/bricks/components/header.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/header.tsx"
+        }
+      ]
+    },
+    {
       "name": "product-card",
       "type": "registry:component",
       "title": "Product Card",
@@ -73,6 +73,20 @@
           "path": "src/registry/bricks/components/section.tsx",
           "type": "registry:component",
           "target": "components/bricks/section.tsx"
+        }
+      ]
+    },
+    {
+      "name": "split-text",
+      "type": "registry:component",
+      "title": "Split Text",
+      "description": "A component that splits and animate text element.",
+      "dependencies": ["@gsap/react", "@radix-ui/react-slot", "gsap"],
+      "files": [
+        {
+          "path": "src/registry/bricks/animated-components/split-text.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/split-text.tsx"
         }
       ]
     }
