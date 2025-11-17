@@ -48,6 +48,19 @@
       ]
     },
     {
+      "name": "loader",
+      "type": "registry:component",
+      "title": "Loader",
+      "description": "A component for loading spinner.",
+      "files": [
+        {
+          "path": "src/registry/bricks/components/loader.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/loader.tsx"
+        }
+      ]
+    },
+    {
       "name": "product-card",
       "type": "registry:component",
       "title": "Product Card",
