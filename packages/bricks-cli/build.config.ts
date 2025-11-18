@@ -8,6 +8,9 @@ export default defineBuildConfig({
       input: "./src/index.ts",
     },
   ],
+  rollup: {
+    emitCJS: true,
+  },
   outDir: "dist",
   declaration: true,
 });

@@ -10,6 +10,9 @@
   ],
   "author": "Rifat Khan <https://github.com/StepAsideLiL/>",
   "license": "MIT",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "bin": {
     "bricks-cli": "./dist/index.mjs"
   },
