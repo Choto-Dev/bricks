@@ -29,6 +29,8 @@
     "unbuild": "^3.6.1"
   },
   "dependencies": {
-    "commander": "^14.0.2"
+    "commander": "^14.0.2",
+    "consola": "^3.4.2",
+    "tree-kill": "^1.2.2"
   }
 }
