@@ -20,7 +20,7 @@
     "build": "unbuild",
     "check-types": "tsc --noEmit",
     "cli": "node ./dist/index.mjs",
-    "lint": "biome check --write .",
+    "lint": "biome check --write",
     "pub:test": "npm unlink -g && npm link",
     "pub:unlink": "npm unlink -g",
     "start": "pnpm build && pnpm cli"
