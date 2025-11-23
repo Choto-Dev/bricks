@@ -34,6 +34,24 @@
       ]
     },
     {
+      "name": "fuma-mdx",
+      "type": "registry:item",
+      "title": "Fuma Mdx",
+      "description": "Fuma Mdx doc support.",
+      "files": [
+        {
+          "path": "src/registry/bricks/fuma-mdx/lib/source.config.ts",
+          "type": "registry:lib",
+          "target": "lib/bricks/fuma-mdx/source.config.ts"
+        },
+        {
+          "path": "src/registry/bricks/fuma-mdx/lib/source.ts",
+          "type": "registry:lib",
+          "target": "lib/bricks/fuma-mdx/source.ts"
+        }
+      ]
+    },
+    {
       "name": "header",
       "type": "registry:component",
       "title": "Header",
