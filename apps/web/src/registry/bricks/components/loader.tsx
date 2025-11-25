@@ -8,7 +8,7 @@ export default function Loader(props: LoaderProps) {
       {...props}
       className={cn(
         "size-14 animate-spin rounded-full border-8 border-foreground border-b-red-500",
-        props.className
+        props.className,
       )}
     />
   );

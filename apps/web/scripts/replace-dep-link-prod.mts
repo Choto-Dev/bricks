@@ -6,7 +6,7 @@ async function main() {
   const resgistryContent = await fs.readFile(resgistryPath, "utf-8");
   const changedRegistry = resgistryContent.replaceAll(
     "http://localhost:3000/",
-    "https://choto-bricks.vercel.app/"
+    "https://choto-bricks.vercel.app/",
   );
   await fs.writeFile(resgistryPath, changedRegistry, "utf-8");
 }

@@ -14,7 +14,7 @@ const activeProcesses = new Set<ChildProcess>();
 function run(
   cmd: string,
   args: string[] = [],
-  rootDir: string = process.cwd()
+  rootDir: string = process.cwd(),
 ) {
   return new Promise<void>((resolve, reject) => {
     const proc = spawn(cmd, args, {
@@ -66,7 +66,7 @@ process.on("exit", killAll);
  */
 async function installComponent(
   componentUrl: string,
-  rootDir: string = process.cwd()
+  rootDir: string = process.cwd(),
 ) {
   try {
     await run("pnpm", ["dlx", "shadcn@latest", "add", componentUrl], rootDir);

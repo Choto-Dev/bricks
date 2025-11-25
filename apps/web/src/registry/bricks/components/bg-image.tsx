@@ -49,7 +49,7 @@ export default function BGImage({
         className={cn(
           "-z-101 absolute inset-0 h-full w-full select-none",
           bgColor === "foreground" && "bg-foreground",
-          bgColor === "background" && "bg-background"
+          bgColor === "background" && "bg-background",
         )}
         style={{ opacity }}
       />

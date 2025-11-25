@@ -14,7 +14,7 @@ addCommand
   .option("-l, --local", "Install package from localhost", false)
   .action(async (name, options) => {
     consola.info(
-      `Downloading ${name} component from ${componentUrl(name, options.local)}`
+      `Downloading ${name} component from ${componentUrl(name, options.local)}`,
     );
     consola.log("");
 

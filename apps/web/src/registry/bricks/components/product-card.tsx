@@ -18,7 +18,7 @@ function ProductCardImage(props: ProductCardImageProps) {
       {...props}
       className={cn(
         "flex aspect-square w-full items-center justify-center overflow-clip",
-        props.className
+        props.className,
       )}
     />
   );

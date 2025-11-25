@@ -15,7 +15,7 @@ function HeaderNav(props: HeaderNavProps) {
         {...props}
         className={cn(
           "flex list-none items-center justify-center gap-5",
-          props.className
+          props.className,
         )}
       />
     </nav>

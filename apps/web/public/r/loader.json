@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "src/registry/bricks/components/loader.tsx",
-      "content": "import type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ntype LoaderProps = React.ComponentPropsWithRef<\"div\">;\nexport default function Loader(props: LoaderProps) {\n  return (\n    <div\n      {...props}\n      className={cn(\n        \"size-14 animate-spin rounded-full border-8 border-foreground border-b-red-500\",\n        props.className\n      )}\n    />\n  );\n}\n",
+      "content": "import type React from \"react\";\nimport { cn } from \"@/lib/utils\";\n\ntype LoaderProps = React.ComponentPropsWithRef<\"div\">;\nexport default function Loader(props: LoaderProps) {\n  return (\n    <div\n      {...props}\n      className={cn(\n        \"size-14 animate-spin rounded-full border-8 border-foreground border-b-red-500\",\n        props.className,\n      )}\n    />\n  );\n}\n",
       "type": "registry:component",
       "target": "components/bricks/loader.tsx"
     }

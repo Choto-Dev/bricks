@@ -42,7 +42,7 @@ function SectionRoot(props: SectionRootProps) {
         sectionRootVariants({
           align: props.align,
           className: props.className,
-        })
+        }),
       )}
       style={{
         position: "relative",
@@ -72,7 +72,7 @@ const sectionHeaderVariants = cva(
     defaultVariants: {
       align: "center",
     },
-  }
+  },
 );
 type SectionHeaderProps = React.ComponentPropsWithRef<"div">;
 function SectionHeader(props: SectionHeaderProps) {
@@ -85,7 +85,7 @@ function SectionHeader(props: SectionHeaderProps) {
         sectionHeaderVariants({
           align,
           className: props.className,
-        })
+        }),
       )}
     />
   );
@@ -124,7 +124,7 @@ function SectionTitle(props: SectionTitleProps) {
           textsize: props.textsize,
           textweight: props.textweight,
           className: props.className,
-        })
+        }),
       )}
     />
   );

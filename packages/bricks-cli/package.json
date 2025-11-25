@@ -26,7 +26,7 @@
     "start": "pnpm build && pnpm cli"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.2.0",
+    "@biomejs/biome": "2.3.7",
     "@types/node": "^20",
     "typescript": "^5",
     "unbuild": "^3.6.1"

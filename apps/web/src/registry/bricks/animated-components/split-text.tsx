@@ -69,7 +69,7 @@ export default function SplitTextAnimation({
 
 function applyPreset(
   preset: SplitTextPresets,
-  options: ApplyPresetsOptions
+  options: ApplyPresetsOptions,
 ): ApplyPresetsOptions {
   const presets: Record<SplitTextPresets, () => ApplyPresetsOptions> = {
     default: () => {
