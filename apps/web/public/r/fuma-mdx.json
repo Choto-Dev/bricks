@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fuma-mdx",
+  "type": "registry:item",
+  "title": "Fuma Mdx",
+  "description": "Fuma Mdx doc support.",
+  "dependencies": [
+    "fumadocs-core",
+    "fumadocs-mdx"
+  ],
+  "devDependencies": [
+    "@types/mdx"
+  ],
+  "registryDependencies": [
+    "https://choto-bricks.vercel.app/r/article.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/bricks/fuma-mdx/components/mdx-components.tsx",
+      "content": "import type { MDXComponents } from \"mdx/types\";\nimport Image, { type ImageProps } from \"next/image\";\nimport { cn } from \"@/lib/utils\";\nimport * as Article from \"@/registry/bricks/components/article\";\n\n/**\n * TODOs:\n * 1. create mdx related component.\n *    - codeblocks\n *    - callouts\n *    - layout component\n * 2. recreate all the \"defaultMdxComponents\" from fumadocs.\n */\n\nconst defaultMdxComponents: MDXComponents = {\n  h1: Article.Title,\n  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (\n    <Article.Heading headingLevel=\"level-1\" {...props} />\n  ),\n  h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (\n    <Article.Heading headingLevel=\"level-2\" {...props} />\n  ),\n  h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (\n    <Article.Heading headingLevel=\"level-3\" {...props} />\n  ),\n  h5: (props: React.HTMLAttributes<HTMLHeadingElement>) => (\n    <Article.Heading headingLevel=\"level-4\" {...props} />\n  ),\n  h6: (props: React.HTMLAttributes<HTMLHeadingElement>) => (\n    <Article.Heading headingLevel=\"level-5\" {...props} />\n  ),\n  p: Article.Paragraph,\n  a: Article.Link,\n  img: (props: ImageProps) => <Image {...props} />,\n  ol: Article.Ol,\n  ul: (props: React.HTMLAttributes<HTMLUListElement>) => {\n    if (props.className?.includes(\"contains-task-list\")) {\n      return <Article.Ul variant={\"task-list\"} {...props} />;\n    }\n    return <Article.Ul {...props} />;\n  },\n  li: (props: React.HTMLAttributes<HTMLLIElement>) => {\n    if (props.className?.includes(\"task-list-item\")) {\n      return (\n        <Article.Li\n          {...props}\n          className={cn(\"flex items-center gap-2\", props.className)}\n        />\n      );\n    }\n    return <Article.Li {...props} />;\n  },\n  input: Article.TaskCheckbox,\n};\n\nexport function getMDXComponents(components?: MDXComponents): MDXComponents {\n  return {\n    ...defaultMdxComponents,\n    ...components,\n  };\n}\n",
+      "type": "registry:component",
+      "target": "components/bricks/fuma-mdx/mdx-components.tsx"
+    },
+    {
+      "path": "src/registry/bricks/fuma-mdx/lib/source.config.ts",
+      "content": "import {\n  defineConfig,\n  defineDocs,\n  frontmatterSchema,\n  metaSchema,\n} from \"fumadocs-mdx/config\";\n\nexport const blogs = defineDocs({\n  dir: \"content/blogs\",\n  docs: {\n    schema: frontmatterSchema,\n  },\n  meta: {\n    schema: metaSchema,\n  },\n});\n\nexport const docs = defineDocs({\n  dir: \"content/docs\",\n  docs: {\n    schema: frontmatterSchema,\n  },\n  meta: {\n    schema: metaSchema,\n  },\n});\n\nexport default defineConfig({\n  mdxOptions: {\n    // MDX options\n  },\n});\n",
+      "type": "registry:lib",
+      "target": "lib/bricks/fuma-mdx/source.config.ts"
+    },
+    {
+      "path": "src/registry/bricks/fuma-mdx/lib/source.ts",
+      "content": "import { loader } from \"fumadocs-core/source\";\nimport { lucideIconsPlugin } from \"fumadocs-core/source/lucide-icons\";\nimport { blogs, docs } from \"@/.source/server\";\n\nexport const source = {\n  blogs: loader({\n    baseUrl: \"/blogs\",\n    source: blogs.toFumadocsSource(),\n    plugins: [lucideIconsPlugin()],\n  }),\n\n  docs: loader({\n    baseUrl: \"/docs\",\n    source: docs.toFumadocsSource(),\n    plugins: [lucideIconsPlugin()],\n  }),\n};\n",
+      "type": "registry:lib",
+      "target": "lib/bricks/fuma-mdx/source.ts"
+    }
+  ]
+}

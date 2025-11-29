@@ -1,7 +1,6 @@
 "use client";
 
 import { useGSAP } from "@gsap/react";
-// import { Slot } from "@radix-ui/react-slot";
 import gsap from "gsap";
 import React from "react";
 
@@ -13,7 +12,7 @@ type CarouselContextProps = {
   setCurrentSliderIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 const CarouselContext = React.createContext<CarouselContextProps | undefined>(
-  undefined
+  undefined,
 );
 
 type CarouselRootProps = React.ComponentPropsWithRef<"div">;
@@ -63,7 +62,7 @@ function CarouselSlides(props: CarouselSlidesProps) {
         {
           opacity: 1,
           y: 0,
-        }
+        },
       );
     }
   });
@@ -105,8 +104,6 @@ function CarouselNextButton() {
   if (!ctx) {
     throw new Error("Carousel.NextButton should be in Carousel.Root");
   }
-
-  console.log(ctx.currentSliderIndex);
 
   return (
     <button

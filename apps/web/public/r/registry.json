@@ -8,10 +8,7 @@
       "type": "registry:component",
       "title": "Article",
       "description": "A Component for articles and blogs",
-      "css": {
-        "@plugin \"@tailwindcss/typography\"": {}
-      },
-      "devDependencies": ["@tailwindcss/typography"],
+      "registryDependencies": ["checkbox"],
       "files": [
         {
           "path": "src/registry/bricks/components/article.tsx",
@@ -30,6 +27,34 @@
           "path": "src/registry/bricks/components/bg-image.tsx",
           "type": "registry:component",
           "target": "components/bricks/bg-image.tsx"
+        }
+      ]
+    },
+    {
+      "name": "fuma-mdx",
+      "type": "registry:item",
+      "title": "Fuma Mdx",
+      "description": "Fuma Mdx doc support.",
+      "dependencies": ["fumadocs-core", "fumadocs-mdx"],
+      "devDependencies": ["@types/mdx"],
+      "registryDependencies": [
+        "https://choto-bricks.vercel.app/r/article.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/bricks/fuma-mdx/components/mdx-components.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/fuma-mdx/mdx-components.tsx"
+        },
+        {
+          "path": "src/registry/bricks/fuma-mdx/lib/source.config.ts",
+          "type": "registry:lib",
+          "target": "lib/bricks/fuma-mdx/source.config.ts"
+        },
+        {
+          "path": "src/registry/bricks/fuma-mdx/lib/source.ts",
+          "type": "registry:lib",
+          "target": "lib/bricks/fuma-mdx/source.ts"
         }
       ]
     },
