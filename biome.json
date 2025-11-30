@@ -14,7 +14,8 @@
       "!dist",
       "!build",
       "!**/.source",
-      "!**/ui/*"
+      "!**/ui/*",
+      "!**/public/r/*"
     ]
   },
   "formatter": {
