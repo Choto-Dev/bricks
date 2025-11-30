@@ -6,10 +6,6 @@ import type { CSSProperties } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 
-/**
- * TODOs:
- * 4. create styled text such as underline, bold, italic, strick through, superscript, subscript etc.
- */
 type ArticleRootProps = React.ComponentPropsWithRef<"article">;
 function ArticleRoot(props: ArticleRootProps) {
   return (
