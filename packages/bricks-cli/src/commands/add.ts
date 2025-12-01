@@ -2,7 +2,7 @@ import { Command } from "commander";
 import consola from "consola";
 import { componentUrl } from "../utils/component-url";
 import { packageJson } from "../utils/package-json";
-import { installComponent } from "../utils/run";
+import { installComponent } from "../utils/run-commands";
 
 export const addCommand = new Command();
 
@@ -14,7 +14,7 @@ addCommand
   .option("-l, --local", "Install package from localhost", false)
   .action(async (name, options) => {
     consola.info(
-      `Downloading ${name} component from ${componentUrl(name, options.local)}`,
+      ` Downloading ${name} component from ${componentUrl(name, options.local)}`,
     );
     consola.log("");
 

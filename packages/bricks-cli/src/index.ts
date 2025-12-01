@@ -2,6 +2,7 @@
 
 import { Command } from "commander";
 import { addCommand } from "./commands/add.js";
+import { initCommand } from "./commands/init.js";
 import { packageJson } from "./utils/package-json.js";
 
 // Terminate process on `SIGINT` and `SIGTERM` signal.
@@ -19,4 +20,5 @@ program
     program.help();
   })
   .addCommand(addCommand)
+  .addCommand(initCommand)
   .parse();
