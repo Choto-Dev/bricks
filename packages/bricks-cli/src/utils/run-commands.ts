@@ -1,4 +1,5 @@
 import { type ChildProcess, spawn } from "node:child_process";
+import path from "node:path";
 import consola from "consola";
 import kill from "tree-kill";
 
@@ -17,6 +18,8 @@ function run(
   rootDir: string = process.cwd(),
 ) {
   return new Promise<void>((resolve, reject) => {
+    consola.info(` Running: ${cmd} ${args.join(" ")}`);
+
     const proc = spawn(cmd, args, {
       cwd: rootDir,
       shell: true,
@@ -95,9 +98,6 @@ async function installNextjs(
 ) {
   try {
     if (options?.default) {
-      consola.info(
-        ` Running: ${pkgManagerExecCommand()} create-next-app@latest ${projectDirName} --typescript --tailwind --react-compiler --biome --app --src-dir --import-alias=@/* --turbopack`,
-      );
       await run(pkgManagerExecCommand(), [
         "create-next-app@latest",
         projectDirName,
@@ -111,9 +111,6 @@ async function installNextjs(
         "--turbopack",
       ]);
     } else {
-      consola.info(
-        ` Running: ${pkgManagerExecCommand()} create-next-app@latest ${projectDirName}`,
-      );
       await run(pkgManagerExecCommand(), [
         "create-next-app@latest",
         projectDirName,
@@ -124,4 +121,29 @@ async function installNextjs(
   }
 }
 
-export { installComponent, installNextjs };
+async function initShadcnUI(
+  projectDirName: string = "my-next-app",
+  options?: { default?: boolean },
+) {
+  consola.log(path.resolve(projectDirName));
+
+  try {
+    if (options?.default) {
+      await run(
+        pkgManagerExecCommand(),
+        ["shadcn@latest", "init", "-d"],
+        path.resolve(projectDirName),
+      );
+    } else {
+      await run(
+        pkgManagerExecCommand(),
+        ["shadcn@latest", "init"],
+        path.resolve(projectDirName),
+      );
+    }
+  } catch (error) {
+    consola.error("❌", error);
+  }
+}
+
+export { installComponent, installNextjs, initShadcnUI };
