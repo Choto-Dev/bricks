@@ -6,8 +6,8 @@
  */
 function componentUrl(componentName: string, isLocal: boolean) {
   const baseUrl = isLocal
-    ? "http://localhost:3000/"
-    : "https://choto-bricks.vercel.app/";
+    ? "http://localhost:3000"
+    : "https://choto-bricks.vercel.app";
 
   return `${baseUrl}/r/${componentName}.json`;
 }
