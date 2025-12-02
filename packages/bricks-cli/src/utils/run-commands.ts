@@ -18,7 +18,7 @@ function run(
   rootDir: string = process.cwd(),
 ) {
   return new Promise<void>((resolve, reject) => {
-    consola.info(` Running: ${cmd} ${args.join(" ")}`);
+    consola.info(` Running: ${cmd} ${args.join(" ")}\n`);
 
     const proc = spawn(cmd, args, {
       cwd: rootDir,
