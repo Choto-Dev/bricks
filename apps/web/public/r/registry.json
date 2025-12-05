@@ -122,7 +122,7 @@
       "dependencies": ["@gsap/react", "@radix-ui/react-slot", "gsap"],
       "files": [
         {
-          "path": "src/registry/bricks/animated-components/split-text.tsx",
+          "path": "src/registry/bricks/components/split-text.tsx",
           "type": "registry:component",
           "target": "components/bricks/split-text.tsx"
         }
