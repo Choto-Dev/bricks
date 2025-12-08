@@ -5,7 +5,7 @@
  * 3. create not found components
  */
 
-import SplitTextAnimation from "@/registry/bricks/animated-components/split-text";
+import SplitTextAnimation from "@/registry/bricks/components/split-text";
 
 export default function Page() {
   return (
