@@ -13,6 +13,7 @@ import * as Article from "@/registry/bricks/components/article";
  */
 
 const defaultMdxComponents: MDXComponents = {
+  blockquote: Article.Blockquote,
   h1: Article.Title,
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <Article.Heading headingLevel="level-1" {...props} />
