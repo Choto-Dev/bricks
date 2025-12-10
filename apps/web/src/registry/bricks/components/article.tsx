@@ -24,7 +24,10 @@ function ArticleBlockquote(props: ArticleBlockquoteProps) {
   return (
     <blockquote
       {...props}
-      className={cn("mx-5 my-2.5 border-l-4 px-5 py-2.5", props.className)}
+      className={cn(
+        "my-2.5 border-muted-foreground border-l-4 px-5 py-2.5 [&>p]:pb-0",
+        props.className,
+      )}
     />
   );
 }
