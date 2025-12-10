@@ -32,6 +32,11 @@ function useEditorContext() {
 function getExtensions() {
   return [
     StarterKit.configure({
+      blockquote: {
+        HTMLAttributes: {
+          class: cn("mx-5 my-2.5 border-l-4 px-5 py-2.5"),
+        },
+      },
       heading: {
         HTMLAttributes: {
           class: cn("heading"),
