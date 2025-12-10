@@ -34,7 +34,7 @@ function getExtensions() {
     StarterKit.configure({
       blockquote: {
         HTMLAttributes: {
-          class: cn("mx-5 my-2.5 border-l-4 px-5 py-2.5"),
+          class: cn("my-2.5 border-muted-foreground border-l-4 px-5 py-2.5"),
         },
       },
       heading: {
