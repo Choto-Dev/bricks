@@ -16,6 +16,19 @@ function ArticleRoot(props: ArticleRootProps) {
   );
 }
 
+// =========================
+// ==== Text Components ====
+// =========================
+type ArticleBlockquoteProps = React.ComponentPropsWithRef<"blockquote">;
+function ArticleBlockquote(props: ArticleBlockquoteProps) {
+  return (
+    <blockquote
+      {...props}
+      className={cn("mx-5 my-2.5 border-l-4 px-5 py-2.5", props.className)}
+    />
+  );
+}
+
 type ArticleH1Props = React.ComponentPropsWithRef<"h1">;
 function ArticleH1(props: ArticleH1Props) {
   return (
@@ -63,6 +76,60 @@ function ArticleP(props: ArticlePProps) {
   return <p {...props} />;
 }
 
+type ArticleTextStyleProps = React.ComponentPropsWithRef<"span"> & {
+  bold?: boolean;
+  italic?: boolean;
+  underline?: boolean;
+  strikethrough?: boolean;
+  subscript?: boolean;
+  superscript?: boolean;
+};
+function ArticleTextStyle({
+  bold,
+  italic,
+  underline,
+  strikethrough,
+  subscript,
+  superscript,
+  ...props
+}: ArticleTextStyleProps) {
+  const styles: CSSProperties = {};
+
+  if (subscript && superscript && process.env.NODE_ENV === "development") {
+    throw new Error("Can not pass both `subscript` and `superscript`.");
+  }
+
+  if (underline) {
+    styles.textDecorationLine = "underline";
+    styles.textUnderlineOffset = "4px";
+  }
+  if (strikethrough) {
+    styles.textDecorationLine = "line-through";
+  }
+  if (underline && strikethrough) {
+    styles.textDecorationLine = "underline line-through";
+    styles.textUnderlineOffset = "4px";
+  }
+
+  return (
+    <span
+      {...props}
+      className={cn(
+        "",
+        bold && "font-bold",
+        italic && "italic",
+        subscript && "align-sub text-[12px]",
+        superscript && "align-super text-[12px]",
+        props.className,
+      )}
+      style={styles}
+    />
+  );
+}
+
+// =========================
+// ==== List Components ====
+// =========================
 const articleOlVariant = cva("list-outside pl-5 marker:text-foreground/80", {
   variants: {
     variant: {
@@ -166,61 +233,9 @@ function ArticleImage(props: ArticleImageProps) {
   return <img loading="lazy" {...props} />;
 }
 
-type ArticleTextStyleProps = React.ComponentPropsWithRef<"span"> & {
-  bold?: boolean;
-  italic?: boolean;
-  underline?: boolean;
-  strikethrough?: boolean;
-  subscript?: boolean;
-  superscript?: boolean;
-};
-function ArticleTextStyle({
-  bold,
-  italic,
-  underline,
-  strikethrough,
-  subscript,
-  superscript,
-  ...props
-}: ArticleTextStyleProps) {
-  const styles: CSSProperties = {};
-
-  if (subscript && superscript && process.env.NODE_ENV === "development") {
-    throw new Error("Can not pass both `subscript` and `superscript`.");
-  }
-
-  if (underline) {
-    styles.textDecorationLine = "underline";
-    styles.textUnderlineOffset = "4px";
-  }
-  if (strikethrough) {
-    styles.textDecorationLine = "line-through";
-  }
-  if (underline && strikethrough) {
-    styles.textDecorationLine = "underline line-through";
-    styles.textUnderlineOffset = "4px";
-  }
-
-  return (
-    <span
-      {...props}
-      className={cn(
-        "",
-        bold && "font-bold",
-        italic && "italic",
-        subscript && "align-sub text-[12px]",
-        superscript && "align-super text-[12px]",
-        props.className,
-      )}
-      style={styles}
-    />
-  );
-}
-
 // ====================================
 // ==== Complex Article Components ====
 // ====================================
-
 function ArticleTitle(props: ArticleH1Props) {
   return (
     <ArticleH1
@@ -298,6 +313,7 @@ function ArticleTask({ checked = false, ...props }: ArticleTaskProps) {
 }
 
 const Root = ArticleRoot;
+const Blockquote = ArticleBlockquote;
 const H1 = ArticleH1;
 const H2 = ArticleH2;
 const H3 = ArticleH3;
@@ -305,13 +321,13 @@ const H4 = ArticleH4;
 const H5 = ArticleH5;
 const H6 = ArticleH6;
 const P = ArticleP;
+const TextStyle = ArticleTextStyle;
 const Ol = ArticleOl;
 const Ul = ArticleUl;
 const Li = ArticleLi;
 const TaskCheckbox = ArticleTaskCheckbox;
 const Link = ArticleLink;
 const Image = ArticleImage;
-const TextStyle = ArticleTextStyle;
 const Title = ArticleTitle;
 const Subtitle = ArticleSubtitle;
 const Heading = ArticleHeading;
@@ -320,6 +336,7 @@ const Task = ArticleTask;
 
 export {
   Root,
+  Blockquote,
   H1,
   H2,
   H3,
@@ -327,13 +344,13 @@ export {
   H5,
   H6,
   P,
+  TextStyle,
   Ol,
   Ul,
   Li,
   TaskCheckbox,
   Link,
   Image,
-  TextStyle,
   Title,
   Subtitle,
   Heading,
