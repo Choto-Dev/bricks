@@ -5,6 +5,7 @@ import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import React from "react";
 import "@/registry/bricks/tiptap-editor/styles/editor.css";
+import { cn } from "@/lib/utils";
 
 type TEditorContent = JSONContent | string;
 type EditorContextProps = {
@@ -28,6 +29,18 @@ function useEditorContext() {
   return ctx;
 }
 
+function getExtensions() {
+  return [
+    StarterKit.configure({
+      heading: {
+        HTMLAttributes: {
+          class: cn("heading"),
+        },
+      },
+    }),
+  ];
+}
+
 function EditorRoot({ children }: { children: React.ReactNode }) {
   const [initialContent, setInitialContent] =
     React.useState<TEditorContent>("");
@@ -36,7 +49,7 @@ function EditorRoot({ children }: { children: React.ReactNode }) {
 
   const editor = useEditor(
     {
-      extensions: [StarterKit],
+      extensions: getExtensions(),
       immediatelyRender: false,
       content: initialContent,
       onUpdate: async ({ editor }) => {
@@ -94,9 +107,11 @@ function EditorRoot({ children }: { children: React.ReactNode }) {
 function EditorEditor({
   content,
   onContentUpdate,
+  className,
 }: {
   content?: TEditorContent;
   onContentUpdate?: (content: TEditorContent) => void;
+  className?: string;
 }) {
   const ctx = useEditorContext();
 
@@ -117,19 +132,19 @@ function EditorEditor({
     return <div className="text-destructive">Editor failed to initiate</div>;
   }
 
-  return <EditorContent editor={ctx.editor} />;
+  return <EditorContent editor={ctx.editor} className={cn(className)} />;
 }
 
-function EditorReadOnly() {
+function EditorReadOnly({ className }: { className?: string }) {
   const ctx = useEditorContext();
 
   if (!ctx) {
-    throw new Error("Editor.Editor should be in Editor.Root");
+    throw new Error("Editor.ReadOnly should be in Editor.Root");
   }
 
   const editor = useEditor(
     {
-      extensions: [StarterKit],
+      extensions: getExtensions(),
       immediatelyRender: false,
       content:
         typeof ctx.currentContent === "string"
@@ -140,7 +155,11 @@ function EditorReadOnly() {
     [ctx],
   );
 
-  return <EditorContent editor={editor} />;
+  if (editor === null) {
+    return <div className="text-destructive">Editor failed to initiate</div>;
+  }
+
+  return <EditorContent editor={editor} className={cn(className)} />;
 }
 
 const Root = EditorRoot;
