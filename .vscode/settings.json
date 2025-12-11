@@ -11,6 +11,7 @@
     "**/.hg/**",
     "**/.svn/**"
   ],
+  "tailwindCSS.emmetCompletions": true,
   "files.associations": { "*.css": "tailwindcss" },
   "typescript.tsdk": "node_modules/typescript/lib",
   "editor.defaultFormatter": "biomejs.biome",
