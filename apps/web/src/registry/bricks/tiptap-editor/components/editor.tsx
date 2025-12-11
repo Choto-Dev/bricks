@@ -37,6 +37,11 @@ function getExtensions() {
           class: cn("my-2.5 border-muted-foreground border-l-4 px-5 py-2.5"),
         },
       },
+      bold: {
+        HTMLAttributes: {
+          class: cn("font-bold"),
+        },
+      },
       heading: {
         HTMLAttributes: {
           class: cn("heading"),
