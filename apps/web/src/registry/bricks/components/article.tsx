@@ -6,6 +6,12 @@ import type { CSSProperties } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 
+/**
+ * TODOs:
+ * 1. remove padding and margin spaces from component.
+ * 2. replace the padding and margin spaces with `Root` lavel style with `[&>p]:pb-3` or `[&>h1]:pb-3`.
+ */
+
 type ArticleRootProps = React.ComponentPropsWithRef<"article">;
 function ArticleRoot(props: ArticleRootProps) {
   return (
