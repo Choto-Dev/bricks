@@ -4,7 +4,7 @@ import type { Editor as EditorType, JSONContent } from "@tiptap/core";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { cva, type VariantProps } from "class-variance-authority";
-import { Bold, Italic, Underline } from "lucide-react";
+import { Bold, Italic, List, Underline } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -231,12 +231,36 @@ function EditorToggleUnderlineBtn(props: EditorToggleUnderlineBtnProps) {
   );
 }
 
+type EditorToggleBulletListBtnProps = React.ComponentPropsWithRef<"button">;
+function EditorToggleBulletListBtn(props: EditorToggleBulletListBtnProps) {
+  const { editor } = useEditorContext();
+
+  if (!editor) {
+    throw new Error("Editor.ToggleBulletListBtn should be in Editor.Root");
+  }
+
+  return (
+    <Button
+      variant={editor.isActive("bulletList") ? "default" : "outline"}
+      size={"icon-sm"}
+      className={cn("cursor-pointer", props.className)}
+      onClick={() => {
+        editor.chain().focus().toggleBulletList().run();
+      }}
+      {...props}
+    >
+      <List className="size-4" />
+    </Button>
+  );
+}
+
 const Root = EditorRoot;
 const Editor = EditorEditor;
 const ReadOnly = EditorReadOnly;
 const ToggleBoldBtn = EditorToggleBoldBtn;
 const ToggleItalicBtn = EditorToggleItalicBtn;
 const ToggleUnderlineBtn = EditorToggleUnderlineBtn;
+const ToggleBulletListBtn = EditorToggleBulletListBtn;
 
 export {
   Root,
@@ -245,4 +269,5 @@ export {
   ToggleBoldBtn,
   ToggleItalicBtn,
   ToggleUnderlineBtn,
+  ToggleBulletListBtn,
 };
