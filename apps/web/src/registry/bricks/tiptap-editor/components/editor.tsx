@@ -3,8 +3,8 @@
 import type { Editor as EditorType, JSONContent } from "@tiptap/core";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { cva, type VariantProps } from "class-variance-authority";
 import React from "react";
-import "@/registry/bricks/tiptap-editor/styles/editor.css";
 import { cn } from "@/lib/utils";
 
 type TEditorContent = JSONContent | string;
@@ -30,25 +30,7 @@ function useEditorContext() {
 }
 
 function getExtensions() {
-  return [
-    StarterKit.configure({
-      blockquote: {
-        HTMLAttributes: {
-          class: cn("my-2.5 border-muted-foreground border-l-4 px-5 py-2.5"),
-        },
-      },
-      bold: {
-        HTMLAttributes: {
-          class: cn("font-bold"),
-        },
-      },
-      heading: {
-        HTMLAttributes: {
-          class: cn("heading"),
-        },
-      },
-    }),
-  ];
+  return [StarterKit];
 }
 
 function EditorRoot({ children }: { children: React.ReactNode }) {
@@ -114,15 +96,33 @@ function EditorRoot({ children }: { children: React.ReactNode }) {
   return <EditorContext value={value}>{children}</EditorContext>;
 }
 
+const editorContentStyleVariant = cva(
+  "[&>.ProseMirror]:focus-visible:border-none [&>.ProseMirror]:focus-visible:shadow-none [&>.ProseMirror]:focus-visible:outline-none",
+  {
+    variants: {
+      variant: {
+        default:
+          "[&_blockquote]:my-2.5 [&_blockquote]:border-muted-foreground [&_blockquote]:border-l-4 [&_blockquote]:px-5 [&_blockquote]:py-2.5 [&_h1]:font-bold [&_h1]:text-6xl [&_h2]:font-semibold [&_h2]:text-4xl [&_h3]:font-semibold [&_h3]:text-3xl [&_h4]:font-semibold [&_h4]:text-2xl [&_h5]:font-semibold [&_h5]:text-xl [&_h6]:font-semibold [&_h6]:text-lg [&_strong]:font-bold",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  },
+);
+
+type EditorEditorProps = React.ComponentPropsWithRef<"div"> &
+  VariantProps<typeof editorContentStyleVariant> & {
+    content?: TEditorContent;
+    onContentUpdate?: (content: TEditorContent) => void;
+  };
 function EditorEditor({
   content,
   onContentUpdate,
   className,
-}: {
-  content?: TEditorContent;
-  onContentUpdate?: (content: TEditorContent) => void;
-  className?: string;
-}) {
+  variant,
+  ...props
+}: EditorEditorProps) {
   const ctx = useEditorContext();
 
   if (!ctx) {
@@ -142,10 +142,23 @@ function EditorEditor({
     return <div className="text-destructive">Editor failed to initiate</div>;
   }
 
-  return <EditorContent editor={ctx.editor} className={cn(className)} />;
+  return (
+    <EditorContent
+      editor={ctx.editor}
+      className={cn(
+        editorContentStyleVariant({
+          variant,
+          className,
+        }),
+      )}
+      {...props}
+    />
+  );
 }
 
-function EditorReadOnly({ className }: { className?: string }) {
+type EditorReadOnlyProps = React.ComponentPropsWithRef<"div"> &
+  VariantProps<typeof editorContentStyleVariant>;
+function EditorReadOnly({ className, variant, ...props }: EditorReadOnlyProps) {
   const ctx = useEditorContext();
 
   if (!ctx) {
@@ -169,7 +182,18 @@ function EditorReadOnly({ className }: { className?: string }) {
     return <div className="text-destructive">Editor failed to initiate</div>;
   }
 
-  return <EditorContent editor={editor} className={cn(className)} />;
+  return (
+    <EditorContent
+      editor={editor}
+      className={cn(
+        editorContentStyleVariant({
+          variant,
+          className,
+        }),
+      )}
+      {...props}
+    />
+  );
 }
 
 const Root = EditorRoot;
