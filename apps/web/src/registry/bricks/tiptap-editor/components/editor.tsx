@@ -1,7 +1,7 @@
 "use client";
 
 import type { Editor as EditorType, JSONContent } from "@tiptap/core";
-import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
+import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Bold, Italic, Underline } from "lucide-react";
@@ -12,16 +12,12 @@ import { cn } from "@/lib/utils";
 type TEditorContent = JSONContent | string;
 type EditorContextProps = {
   editor: EditorType | null;
-  editorState: {
-    isEditorFocus: boolean;
-  } | null;
   initialContent: TEditorContent;
   setInitialContent: React.Dispatch<React.SetStateAction<string | JSONContent>>;
   currentContent: TEditorContent;
 };
 const EditorContext = React.createContext<EditorContextProps>({
   editor: null,
-  editorState: null,
   initialContent: "",
   setInitialContent: (content: TEditorContent) => content,
   currentContent: "",
@@ -52,39 +48,6 @@ function EditorRoot({ children }: { children: React.ReactNode }) {
     },
     [initialContent],
   );
-  const editorState = useEditorState({
-    editor,
-    selector: (ctx) => {
-      return {
-        isEditorFocus: ctx.editor?.isFocused ?? false,
-        isBold: ctx.editor?.isActive("bold") ?? false,
-        canBold: ctx.editor?.can().chain().toggleBold().run() ?? false,
-        isItalic: ctx.editor?.isActive("italic") ?? false,
-        canItalic: ctx.editor?.can().chain().toggleItalic().run() ?? false,
-        isUnderline: ctx.editor?.isActive("underline") ?? false,
-        canUnderline:
-          ctx.editor?.can().chain().toggleUnderline().run() ?? false,
-        isStrike: ctx.editor?.isActive("strike") ?? false,
-        canStrike: ctx.editor?.can().chain().toggleStrike().run() ?? false,
-        isCode: ctx.editor?.isActive("code") ?? false,
-        canCode: ctx.editor?.can().chain().toggleCode().run() ?? false,
-        canClearMarks: ctx.editor?.can().chain().unsetAllMarks().run() ?? false,
-        isParagraph: ctx.editor?.isActive("paragraph") ?? false,
-        isHeading1: ctx.editor?.isActive("heading", { level: 1 }) ?? false,
-        isHeading2: ctx.editor?.isActive("heading", { level: 2 }) ?? false,
-        isHeading3: ctx.editor?.isActive("heading", { level: 3 }) ?? false,
-        isHeading4: ctx.editor?.isActive("heading", { level: 4 }) ?? false,
-        isHeading5: ctx.editor?.isActive("heading", { level: 5 }) ?? false,
-        isHeading6: ctx.editor?.isActive("heading", { level: 6 }) ?? false,
-        isBulletList: ctx.editor?.isActive("bulletList") ?? false,
-        isOrderedList: ctx.editor?.isActive("orderedList") ?? false,
-        isCodeBlock: ctx.editor?.isActive("codeBlock") ?? false,
-        isBlockquote: ctx.editor?.isActive("blockquote") ?? false,
-        canUndo: ctx.editor?.can().chain().undo().run() ?? false,
-        canRedo: ctx.editor?.can().chain().redo().run() ?? false,
-      };
-    },
-  });
 
   if (!editor) {
     return null;
@@ -92,7 +55,6 @@ function EditorRoot({ children }: { children: React.ReactNode }) {
 
   const value = {
     editor,
-    editorState,
     initialContent,
     setInitialContent,
     currentContent,
