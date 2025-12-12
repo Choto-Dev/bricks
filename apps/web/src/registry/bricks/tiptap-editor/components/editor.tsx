@@ -4,7 +4,9 @@ import type { Editor as EditorType, JSONContent } from "@tiptap/core";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { cva, type VariantProps } from "class-variance-authority";
+import { Bold, Italic, Underline } from "lucide-react";
 import React from "react";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 type TEditorContent = JSONContent | string;
@@ -24,8 +26,8 @@ const EditorContext = React.createContext<EditorContextProps>({
   setInitialContent: (content: TEditorContent) => content,
   currentContent: "",
 });
-function useEditorContext() {
-  const ctx = React.useContext(EditorContext);
+export function useEditorContext() {
+  const ctx = React.use(EditorContext);
   return ctx;
 }
 
@@ -59,6 +61,9 @@ function EditorRoot({ children }: { children: React.ReactNode }) {
         canBold: ctx.editor?.can().chain().toggleBold().run() ?? false,
         isItalic: ctx.editor?.isActive("italic") ?? false,
         canItalic: ctx.editor?.can().chain().toggleItalic().run() ?? false,
+        isUnderline: ctx.editor?.isActive("underline") ?? false,
+        canUnderline:
+          ctx.editor?.can().chain().toggleUnderline().run() ?? false,
         isStrike: ctx.editor?.isActive("strike") ?? false,
         canStrike: ctx.editor?.can().chain().toggleStrike().run() ?? false,
         isCode: ctx.editor?.isActive("code") ?? false,
@@ -123,28 +128,24 @@ function EditorEditor({
   variant,
   ...props
 }: EditorEditorProps) {
-  const ctx = useEditorContext();
+  const { editor, setInitialContent } = useEditorContext();
 
-  if (!ctx) {
+  if (!editor) {
     throw new Error("Editor.Editor should be in Editor.Root");
   }
 
   React.useEffect(() => {
     if (content) {
-      ctx.setInitialContent(content);
+      setInitialContent(content);
     }
-    if (onContentUpdate && ctx.editor) {
-      onContentUpdate(ctx.editor?.getJSON());
+    if (onContentUpdate) {
+      onContentUpdate(editor.getJSON());
     }
-  }, [ctx, content, onContentUpdate]);
-
-  if (ctx.editor === null) {
-    return <div className="text-destructive">Editor failed to initiate</div>;
-  }
+  }, [content, editor, onContentUpdate, setInitialContent]);
 
   return (
     <EditorContent
-      editor={ctx.editor}
+      editor={editor}
       className={cn(
         editorContentStyleVariant({
           variant,
@@ -161,7 +162,7 @@ type EditorReadOnlyProps = React.ComponentPropsWithRef<"div"> &
 function EditorReadOnly({ className, variant, ...props }: EditorReadOnlyProps) {
   const ctx = useEditorContext();
 
-  if (!ctx) {
+  if (!ctx || !ctx.editor) {
     throw new Error("Editor.ReadOnly should be in Editor.Root");
   }
 
@@ -196,8 +197,90 @@ function EditorReadOnly({ className, variant, ...props }: EditorReadOnlyProps) {
   );
 }
 
+// ========================
+// ==== Toggle Buttons ====
+// ========================
+type EditorToggleBoldBtnProps = React.ComponentPropsWithRef<"button">;
+function EditorToggleBoldBtn(props: EditorToggleBoldBtnProps) {
+  const { editor } = useEditorContext();
+
+  if (!editor) {
+    throw new Error("Editor.ToggleBoldBtn should be in Editor.Root");
+  }
+
+  return (
+    <Button
+      variant={editor.isActive("bold") ? "default" : "outline"}
+      size={"icon-sm"}
+      className={cn("cursor-pointer", props.className)}
+      onClick={() => {
+        editor.chain().focus().toggleBold().run();
+      }}
+      {...props}
+    >
+      <Bold className="size-4" />
+    </Button>
+  );
+}
+
+type EditorToggleItalicBtnProps = React.ComponentPropsWithRef<"button">;
+function EditorToggleItalicBtn(props: EditorToggleItalicBtnProps) {
+  const { editor } = useEditorContext();
+
+  if (!editor) {
+    throw new Error("Editor.ToggleItalicBtn should be in Editor.Root");
+  }
+
+  return (
+    <Button
+      variant={editor.isActive("italic") ? "default" : "outline"}
+      size={"icon-sm"}
+      className={cn("cursor-pointer", props.className)}
+      onClick={() => {
+        editor.chain().focus().toggleItalic().run();
+      }}
+      {...props}
+    >
+      <Italic className="size-4" />
+    </Button>
+  );
+}
+
+type EditorToggleUnderlineBtnProps = React.ComponentPropsWithRef<"button">;
+function EditorToggleUnderlineBtn(props: EditorToggleUnderlineBtnProps) {
+  const { editor } = useEditorContext();
+
+  if (!editor) {
+    throw new Error("Editor.ToggleUnderlineBtn should be in Editor.Root");
+  }
+
+  return (
+    <Button
+      variant={editor.isActive("underline") ? "default" : "outline"}
+      size={"icon-sm"}
+      className={cn("cursor-pointer", props.className)}
+      onClick={() => {
+        editor.chain().focus().toggleUnderline().run();
+      }}
+      {...props}
+    >
+      <Underline className="size-4" />
+    </Button>
+  );
+}
+
 const Root = EditorRoot;
 const Editor = EditorEditor;
 const ReadOnly = EditorReadOnly;
+const ToggleBoldBtn = EditorToggleBoldBtn;
+const ToggleItalicBtn = EditorToggleItalicBtn;
+const ToggleUnderlineBtn = EditorToggleUnderlineBtn;
 
-export { Root, Editor, ReadOnly };
+export {
+  Root,
+  Editor,
+  ReadOnly,
+  ToggleBoldBtn,
+  ToggleItalicBtn,
+  ToggleUnderlineBtn,
+};
