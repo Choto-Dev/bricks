@@ -90,7 +90,8 @@ function EditorEditor({
   variant,
   ...props
 }: EditorEditorProps) {
-  const { editor, setInitialContent } = useEditorContext();
+  const { editor, currentContent, initialContent, setInitialContent } =
+    useEditorContext();
 
   if (!editor) {
     throw new Error("Editor.Editor should be in Editor.Root");
@@ -100,10 +101,13 @@ function EditorEditor({
     if (content) {
       setInitialContent(content);
     }
+  }, [content, setInitialContent]);
+
+  React.useEffect(() => {
     if (onContentUpdate) {
-      onContentUpdate(editor.getJSON());
+      onContentUpdate(currentContent ? currentContent : initialContent);
     }
-  }, [content, editor, onContentUpdate, setInitialContent]);
+  }, [onContentUpdate, currentContent, initialContent]);
 
   return (
     <EditorContent
