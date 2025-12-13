@@ -4,7 +4,7 @@ import type { Editor as EditorType, JSONContent } from "@tiptap/core";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { cva, type VariantProps } from "class-variance-authority";
-import { Bold, Italic, List, Underline } from "lucide-react";
+import { Bold, Italic, List, ListOrdered, Underline } from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -69,7 +69,7 @@ const editorContentStyleVariant = cva(
     variants: {
       variant: {
         default:
-          "[&_blockquote]:my-2.5 [&_blockquote]:border-muted-foreground [&_blockquote]:border-l-4 [&_blockquote]:px-5 [&_blockquote]:py-2.5 [&_em]:italic [&_h1]:font-bold [&_h1]:text-6xl [&_h2]:font-semibold [&_h2]:text-4xl [&_h3]:font-semibold [&_h3]:text-3xl [&_h4]:font-semibold [&_h4]:text-2xl [&_h5]:font-semibold [&_h5]:text-xl [&_h6]:font-semibold [&_h6]:text-lg [&_hr]:border-muted-foreground [&_strong]:font-bold [&_u]:underline [&_ul]:list-disc",
+          "[&_blockquote]:my-2.5 [&_blockquote]:border-muted-foreground [&_blockquote]:border-l-4 [&_blockquote]:px-5 [&_blockquote]:py-2.5 [&_em]:italic [&_h1]:font-bold [&_h1]:text-6xl [&_h2]:font-semibold [&_h2]:text-4xl [&_h3]:font-semibold [&_h3]:text-3xl [&_h4]:font-semibold [&_h4]:text-2xl [&_h5]:font-semibold [&_h5]:text-xl [&_h6]:font-semibold [&_h6]:text-lg [&_hr]:border-muted-foreground [&_ol]:list-decimal [&_strong]:font-bold [&_u]:underline [&_ul]:list-disc",
       },
     },
     defaultVariants: {
@@ -258,6 +258,29 @@ function EditorToggleBulletListBtn(props: EditorToggleBulletListBtnProps) {
   );
 }
 
+type EditorToggleOrderedListBtnProps = React.ComponentPropsWithRef<"button">;
+function EditorToggleOrderedListBtn(props: EditorToggleOrderedListBtnProps) {
+  const { editor } = useEditorContext();
+
+  if (!editor) {
+    throw new Error("Editor.ToggleOrderedListBtn should be in Editor.Root");
+  }
+
+  return (
+    <Button
+      variant={editor.isActive("orderedList") ? "default" : "outline"}
+      size={"icon-sm"}
+      className={cn("cursor-pointer", props.className)}
+      onClick={() => {
+        editor.chain().focus().toggleOrderedList().run();
+      }}
+      {...props}
+    >
+      <ListOrdered className="size-4" />
+    </Button>
+  );
+}
+
 const Root = EditorRoot;
 const Editor = EditorEditor;
 const ReadOnly = EditorReadOnly;
@@ -265,6 +288,7 @@ const ToggleBoldBtn = EditorToggleBoldBtn;
 const ToggleItalicBtn = EditorToggleItalicBtn;
 const ToggleUnderlineBtn = EditorToggleUnderlineBtn;
 const ToggleBulletListBtn = EditorToggleBulletListBtn;
+const ToggleOrderedListBtn = EditorToggleOrderedListBtn;
 
 export {
   Root,
@@ -274,4 +298,5 @@ export {
   ToggleItalicBtn,
   ToggleUnderlineBtn,
   ToggleBulletListBtn,
+  ToggleOrderedListBtn,
 };
