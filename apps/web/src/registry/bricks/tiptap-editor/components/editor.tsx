@@ -6,6 +6,7 @@ import StarterKit from "@tiptap/starter-kit";
 import { cva, type VariantProps } from "class-variance-authority";
 import {
   Bold,
+  Code,
   Italic,
   List,
   ListOrdered,
@@ -76,7 +77,7 @@ const editorContentStyleVariant = cva(
     variants: {
       variant: {
         default:
-          "[&_blockquote]:my-2.5 [&_blockquote]:border-muted-foreground [&_blockquote]:border-l-4 [&_blockquote]:px-5 [&_blockquote]:py-2.5 [&_em]:italic [&_h1]:font-bold [&_h1]:text-6xl [&_h2]:font-semibold [&_h2]:text-4xl [&_h3]:font-semibold [&_h3]:text-3xl [&_h4]:font-semibold [&_h4]:text-2xl [&_h5]:font-semibold [&_h5]:text-xl [&_h6]:font-semibold [&_h6]:text-lg [&_hr]:border-muted-foreground [&_ol]:list-decimal [&_s]:line-through [&_strong]:font-bold [&_u]:underline [&_ul]:list-disc",
+          "[&_blockquote]:my-2.5 [&_blockquote]:border-muted-foreground [&_blockquote]:border-l-4 [&_blockquote]:px-5 [&_blockquote]:py-2.5 [&_code]:bg-muted [&_code]:px-1 [&_code]:font-mono [&_em]:italic [&_h1]:font-bold [&_h1]:text-6xl [&_h2]:font-semibold [&_h2]:text-4xl [&_h3]:font-semibold [&_h3]:text-3xl [&_h4]:font-semibold [&_h4]:text-2xl [&_h5]:font-semibold [&_h5]:text-xl [&_h6]:font-semibold [&_h6]:text-lg [&_hr]:border-muted-foreground [&_ol]:list-decimal [&_s]:line-through [&_strong]:font-bold [&_u]:underline [&_ul]:list-disc",
       },
     },
     defaultVariants: {
@@ -265,6 +266,29 @@ function EditorToggleStrikeBtn(props: EditorToggleStrikeBtnProps) {
   );
 }
 
+type EditorToggleCodeBtnProps = React.ComponentPropsWithRef<"button">;
+function EditorToggleCodeBtn(props: EditorToggleCodeBtnProps) {
+  const { editor } = useEditorContext();
+
+  if (!editor) {
+    throw new Error("Editor.ToggleCodeBtn should be in Editor.Root");
+  }
+
+  return (
+    <Button
+      variant={editor.isActive("code") ? "default" : "outline"}
+      size={"icon-sm"}
+      className={cn("cursor-pointer", props.className)}
+      onClick={() => {
+        editor.chain().focus().toggleCode().run();
+      }}
+      {...props}
+    >
+      <Code className="size-4" />
+    </Button>
+  );
+}
+
 type EditorToggleBulletListBtnProps = React.ComponentPropsWithRef<"button">;
 function EditorToggleBulletListBtn(props: EditorToggleBulletListBtnProps) {
   const { editor } = useEditorContext();
@@ -318,6 +342,7 @@ const ToggleBoldBtn = EditorToggleBoldBtn;
 const ToggleItalicBtn = EditorToggleItalicBtn;
 const ToggleUnderlineBtn = EditorToggleUnderlineBtn;
 const ToggleStrikeBtn = EditorToggleStrikeBtn;
+const ToggleCodeBtn = EditorToggleCodeBtn;
 const ToggleBulletListBtn = EditorToggleBulletListBtn;
 const ToggleOrderedListBtn = EditorToggleOrderedListBtn;
 
@@ -329,6 +354,7 @@ export {
   ToggleItalicBtn,
   ToggleUnderlineBtn,
   ToggleStrikeBtn,
+  ToggleCodeBtn,
   ToggleBulletListBtn,
   ToggleOrderedListBtn,
 };
