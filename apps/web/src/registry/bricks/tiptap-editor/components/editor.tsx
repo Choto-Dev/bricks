@@ -4,7 +4,14 @@ import type { Editor as EditorType, JSONContent } from "@tiptap/core";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { cva, type VariantProps } from "class-variance-authority";
-import { Bold, Italic, List, ListOrdered, Underline } from "lucide-react";
+import {
+  Bold,
+  Italic,
+  List,
+  ListOrdered,
+  Strikethrough,
+  Underline,
+} from "lucide-react";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -69,7 +76,7 @@ const editorContentStyleVariant = cva(
     variants: {
       variant: {
         default:
-          "[&_blockquote]:my-2.5 [&_blockquote]:border-muted-foreground [&_blockquote]:border-l-4 [&_blockquote]:px-5 [&_blockquote]:py-2.5 [&_em]:italic [&_h1]:font-bold [&_h1]:text-6xl [&_h2]:font-semibold [&_h2]:text-4xl [&_h3]:font-semibold [&_h3]:text-3xl [&_h4]:font-semibold [&_h4]:text-2xl [&_h5]:font-semibold [&_h5]:text-xl [&_h6]:font-semibold [&_h6]:text-lg [&_hr]:border-muted-foreground [&_ol]:list-decimal [&_strong]:font-bold [&_u]:underline [&_ul]:list-disc",
+          "[&_blockquote]:my-2.5 [&_blockquote]:border-muted-foreground [&_blockquote]:border-l-4 [&_blockquote]:px-5 [&_blockquote]:py-2.5 [&_em]:italic [&_h1]:font-bold [&_h1]:text-6xl [&_h2]:font-semibold [&_h2]:text-4xl [&_h3]:font-semibold [&_h3]:text-3xl [&_h4]:font-semibold [&_h4]:text-2xl [&_h5]:font-semibold [&_h5]:text-xl [&_h6]:font-semibold [&_h6]:text-lg [&_hr]:border-muted-foreground [&_ol]:list-decimal [&_s]:line-through [&_strong]:font-bold [&_u]:underline [&_ul]:list-disc",
       },
     },
     defaultVariants: {
@@ -235,6 +242,29 @@ function EditorToggleUnderlineBtn(props: EditorToggleUnderlineBtnProps) {
   );
 }
 
+type EditorToggleStrikeBtnProps = React.ComponentPropsWithRef<"button">;
+function EditorToggleStrikeBtn(props: EditorToggleStrikeBtnProps) {
+  const { editor } = useEditorContext();
+
+  if (!editor) {
+    throw new Error("Editor.ToggleStrikeBtn should be in Editor.Root");
+  }
+
+  return (
+    <Button
+      variant={editor.isActive("strike") ? "default" : "outline"}
+      size={"icon-sm"}
+      className={cn("cursor-pointer", props.className)}
+      onClick={() => {
+        editor.chain().focus().toggleStrike().run();
+      }}
+      {...props}
+    >
+      <Strikethrough className="size-4" />
+    </Button>
+  );
+}
+
 type EditorToggleBulletListBtnProps = React.ComponentPropsWithRef<"button">;
 function EditorToggleBulletListBtn(props: EditorToggleBulletListBtnProps) {
   const { editor } = useEditorContext();
@@ -287,6 +317,7 @@ const ReadOnly = EditorReadOnly;
 const ToggleBoldBtn = EditorToggleBoldBtn;
 const ToggleItalicBtn = EditorToggleItalicBtn;
 const ToggleUnderlineBtn = EditorToggleUnderlineBtn;
+const ToggleStrikeBtn = EditorToggleStrikeBtn;
 const ToggleBulletListBtn = EditorToggleBulletListBtn;
 const ToggleOrderedListBtn = EditorToggleOrderedListBtn;
 
@@ -297,6 +328,7 @@ export {
   ToggleBoldBtn,
   ToggleItalicBtn,
   ToggleUnderlineBtn,
+  ToggleStrikeBtn,
   ToggleBulletListBtn,
   ToggleOrderedListBtn,
 };
