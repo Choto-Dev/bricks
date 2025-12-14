@@ -3,6 +3,7 @@
  * 1. create open graph image components
  * 2. create loading components
  * 3. create not found components
+ * 4. create better ui (such as, tooltip)
  */
 
 import SplitTextAnimation from "@/registry/bricks/components/split-text";

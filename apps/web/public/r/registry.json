@@ -40,16 +40,12 @@
         "@tiptap/react@3.13.0",
         "@tiptap/starter-kit@3.13.0"
       ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "src/registry/bricks/tiptap-editor/components/editor.tsx",
           "type": "registry:component",
           "target": "components/bricks/tiptap-editor/editor.tsx"
-        },
-        {
-          "path": "src/registry/bricks/tiptap-editor/styles/editor.css",
-          "type": "registry:style",
-          "target": "components/bricks/tiptap-editor/editor.css"
         }
       ]
     },
