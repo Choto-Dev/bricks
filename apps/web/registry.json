@@ -146,6 +146,20 @@
           "target": "components/bricks/split-text.tsx"
         }
       ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:component",
+      "title": "Tooltip",
+      "description": "A better tooltip component.",
+      "dependencies": ["@radix-ui/react-tooltip"],
+      "files": [
+        {
+          "path": "src/registry/bricks/components/tooltip.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/tooltip.tsx"
+        }
+      ]
     }
   ]
 }
