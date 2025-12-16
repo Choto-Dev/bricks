@@ -3,31 +3,17 @@
  * 1. create open graph image components
  * 2. create loading components
  * 3. create not found components
- * 4. create better ui (such as, tooltip)
+ * 4. create better ui (such as, mobile, desktop, laptop and web mockup)
  */
 
-import SplitTextAnimation from "@/registry/bricks/components/split-text";
+import { GsapSplitText } from "@/registry/bricks/components/gsap/split-text";
 
 export default function Page() {
   return (
     <main className="flex h-screen items-center justify-center">
-      <SplitTextAnimation
-        asChild
-        splitVars={{
-          type: "words, chars, lines",
-          mask: "chars",
-        }}
-        fromTween={{
-          y: 200,
-        }}
-        toTween={{
-          y: 0,
-          duration: 1,
-          stagger: 0.1,
-        }}
-      >
+      <GsapSplitText mask="lines" asChild>
         <h1 className="font-black text-9xl">Hello, Bricks</h1>
-      </SplitTextAnimation>
+      </GsapSplitText>
     </main>
   );
 }
