@@ -11,10 +11,16 @@ type TGsapMotion = {
   from: GSAPTweenVars;
   to: GSAPTweenVars;
 };
+type TApplyPreset = {
+  splitText: SplitText.Vars;
+  from: TGsapMotion["from"];
+  to: TGsapMotion["to"];
+};
 type SplitTextProps = React.ComponentPropsWithRef<"div"> & {
   motion?: TGsapMotion;
   mask?: SplitText.Vars["mask"];
   preset?: TSplitTextPresets;
+  repeat?: boolean;
   asChild?: boolean;
 };
 
@@ -22,20 +28,23 @@ export function GsapSplitText({
   motion,
   mask = "chars",
   preset = "default",
+  repeat = false,
   asChild = false,
   ...props
 }: SplitTextProps) {
   const ref = React.useRef(null);
-  const tl = gsap.timeline();
+  const tl = gsap.timeline({
+    repeat: repeat ? -1 : 1,
+    repeatDelay: 1,
+  });
 
-  const presetOption = applyPreset(preset);
+  const presetOption = applyPreset(preset, {
+    mask,
+  });
 
   useGSAP(() => {
     if (ref.current) {
-      const splitText = SplitText.create(ref.current, {
-        type: "words, chars, lines",
-        mask,
-      });
+      const splitText = SplitText.create(ref.current, presetOption.splitText);
       tl.set(splitText[mask], {
         transformOrigin: "bottom",
         transformStyle: "preserve-3d",
@@ -52,9 +61,21 @@ export function GsapSplitText({
   return <Comp ref={ref} {...props} />;
 }
 
-function applyPreset(preset: TSplitTextPresets): TGsapMotion {
-  const presets: Record<TSplitTextPresets, TGsapMotion> = {
+function applyPreset(
+  preset: TSplitTextPresets,
+  options?: {
+    mask?: SplitText.Vars["mask"];
+  },
+): TApplyPreset {
+  const splitText: SplitText.Vars = {
+    type: "words, chars, lines",
+    mask: options?.mask,
+  };
+  const presets: Record<TSplitTextPresets, TApplyPreset> = {
     default: {
+      splitText: {
+        ...splitText,
+      },
       from: {
         y: 100,
       },

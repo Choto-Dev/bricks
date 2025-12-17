@@ -11,7 +11,20 @@ import { GsapSplitText } from "@/registry/bricks/components/gsap/split-text";
 export default function Page() {
   return (
     <main className="flex h-screen items-center justify-center">
-      <GsapSplitText mask="lines" asChild>
+      <GsapSplitText
+        mask="chars"
+        motion={{
+          from: {
+            rotateY: 360,
+          },
+          to: {
+            rotateY: 0,
+            duration: 1,
+          },
+        }}
+        repeat
+        asChild
+      >
         <h1 className="font-black text-9xl">Hello, Bricks</h1>
       </GsapSplitText>
     </main>
