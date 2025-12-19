@@ -78,6 +78,20 @@
       ]
     },
     {
+      "name": "gsap",
+      "type": "registry:component",
+      "title": "Gsap",
+      "description": "A component for animating.",
+      "dependencies": ["@gsap/react", "@radix-ui/react-slot", "gsap"],
+      "files": [
+        {
+          "path": "./src/registry/bricks/components/gsap.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/gsap.tsx"
+        }
+      ]
+    },
+    {
       "name": "header",
       "type": "registry:component",
       "title": "Header",
