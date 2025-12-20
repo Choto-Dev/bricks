@@ -142,11 +142,11 @@ function SectionContent(props: SectionContentProps) {
   return <div {...props} className={cn("max-w-7xl", props.className)} />;
 }
 
-const Root = SectionRoot;
-const Header = SectionHeader;
-const Title = SectionTitle;
-const Subtitle = SectionSubtitle;
-const Content = SectionContent;
-const BG = BGImage;
-
-export { Root, Header, Title, Subtitle, Content, BG };
+export {
+  SectionRoot as Root,
+  SectionHeader as Header,
+  SectionTitle as Title,
+  SectionSubtitle as Subtitle,
+  SectionContent as Content,
+  BGImage as BG,
+};

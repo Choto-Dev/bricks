@@ -61,12 +61,12 @@ function ProductCardDiscountAmount(props: ProductCardDiscountAmountProps) {
   );
 }
 
-const Root = ProductCardRoot;
-const Image = ProductCardImage;
-const Info = ProductCardInfo;
-const Title = ProductCardTitle;
-const Price = ProductCardPrice;
-const NormalPrice = ProductCardNormalPrice;
-const DiscountAmount = ProductCardDiscountAmount;
-
-export { Root, Image, Info, Title, Price, NormalPrice, DiscountAmount };
+export {
+  ProductCardRoot as Root,
+  ProductCardImage as Image,
+  ProductCardInfo as Info,
+  ProductCardTitle as Title,
+  ProductCardPrice as Price,
+  ProductCardNormalPrice as NormalPrice,
+  ProductCardDiscountAmount as DiscountAmount,
+};

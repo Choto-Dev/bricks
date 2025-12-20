@@ -115,10 +115,10 @@ function CarouselNextButton() {
   );
 }
 
-const Root = CarouselRoot;
-const Slides = CarouselSlides;
-const Item = CarouselItem;
-const PreviousButton = CarouselPreviousButton;
-const NextButton = CarouselNextButton;
-
-export { Root, Slides, Item, PreviousButton, NextButton };
+export {
+  CarouselRoot as Root,
+  CarouselSlides as Slides,
+  CarouselItem as Item,
+  CarouselPreviousButton as PreviousButton,
+  CarouselNextButton as NextButton,
+};

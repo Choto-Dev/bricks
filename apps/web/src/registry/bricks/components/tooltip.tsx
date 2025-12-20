@@ -99,8 +99,8 @@ function TooltipContent({
   );
 }
 
-const Root = TooltipRoot;
-const Trigger = TooltipTrigger;
-const Content = TooltipContent;
-
-export { Root, Trigger, Content };
+export {
+  TooltipRoot as Root,
+  TooltipTrigger as Trigger,
+  TooltipContent as Content,
+};

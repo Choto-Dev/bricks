@@ -31,8 +31,4 @@ function HeaderNavItem({ asChild = false, ...props }: HeaderNavItemProps) {
   return <Component {...props} className={cn("", props.className)} />;
 }
 
-const Root = HeaderRoot;
-const Nav = HeaderNav;
-const NavItem = HeaderNavItem;
-
-export { Root, Nav, NavItem };
+export { HeaderRoot as Root, HeaderNav as Nav, HeaderNavItem as NavItem };

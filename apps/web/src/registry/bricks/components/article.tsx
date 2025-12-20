@@ -321,48 +321,26 @@ function ArticleTask({ checked = false, ...props }: ArticleTaskProps) {
   );
 }
 
-const Root = ArticleRoot;
-const Blockquote = ArticleBlockquote;
-const H1 = ArticleH1;
-const H2 = ArticleH2;
-const H3 = ArticleH3;
-const H4 = ArticleH4;
-const H5 = ArticleH5;
-const H6 = ArticleH6;
-const P = ArticleP;
-const TextStyle = ArticleTextStyle;
-const Ol = ArticleOl;
-const Ul = ArticleUl;
-const Li = ArticleLi;
-const TaskCheckbox = ArticleTaskCheckbox;
-const Link = ArticleLink;
-const Image = ArticleImage;
-const Title = ArticleTitle;
-const Subtitle = ArticleSubtitle;
-const Heading = ArticleHeading;
-const Paragraph = ArticleParagraph;
-const Task = ArticleTask;
-
 export {
-  Root,
-  Blockquote,
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  P,
-  TextStyle,
-  Ol,
-  Ul,
-  Li,
-  TaskCheckbox,
-  Link,
-  Image,
-  Title,
-  Subtitle,
-  Heading,
-  Paragraph,
-  Task,
+  ArticleRoot as Root,
+  ArticleBlockquote as Blockquote,
+  ArticleH1 as H1,
+  ArticleH2 as H2,
+  ArticleH3 as H3,
+  ArticleH4 as H4,
+  ArticleH5 as H5,
+  ArticleH6 as H6,
+  ArticleP as P,
+  ArticleTextStyle as TextStyle,
+  ArticleOl as Ol,
+  ArticleUl as Ul,
+  ArticleLi as Li,
+  ArticleTaskCheckbox as TaskCheckbox,
+  ArticleLink as Link,
+  ArticleImage as Image,
+  ArticleTitle as Title,
+  ArticleSubtitle as Subtitle,
+  ArticleHeading as Heading,
+  ArticleParagraph as Paragraph,
+  ArticleTask as Task,
 };
