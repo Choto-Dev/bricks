@@ -78,6 +78,20 @@
       ]
     },
     {
+      "name": "gsap",
+      "type": "registry:component",
+      "title": "Gsap",
+      "description": "A component for animating.",
+      "dependencies": ["@gsap/react", "@radix-ui/react-slot", "gsap"],
+      "files": [
+        {
+          "path": "./src/registry/bricks/components/gsap.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/gsap.tsx"
+        }
+      ]
+    },
+    {
       "name": "header",
       "type": "registry:component",
       "title": "Header",
@@ -130,20 +144,6 @@
           "path": "src/registry/bricks/components/section.tsx",
           "type": "registry:component",
           "target": "components/bricks/section.tsx"
-        }
-      ]
-    },
-    {
-      "name": "split-text",
-      "type": "registry:component",
-      "title": "Split Text",
-      "description": "A component that splits and animate text element.",
-      "dependencies": ["@gsap/react", "@radix-ui/react-slot", "gsap"],
-      "files": [
-        {
-          "path": "src/registry/bricks/components/gsap/split-text.tsx",
-          "type": "registry:component",
-          "target": "components/bricks/split-text.tsx"
         }
       ]
     },

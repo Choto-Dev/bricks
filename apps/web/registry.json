@@ -148,20 +148,6 @@
       ]
     },
     {
-      "name": "split-text",
-      "type": "registry:component",
-      "title": "Split Text",
-      "description": "A component that splits and animate text element.",
-      "dependencies": ["@gsap/react", "@radix-ui/react-slot", "gsap"],
-      "files": [
-        {
-          "path": "src/registry/bricks/components/gsap/split-text.tsx",
-          "type": "registry:component",
-          "target": "components/bricks/split-text.tsx"
-        }
-      ]
-    },
-    {
       "name": "tooltip",
       "type": "registry:component",
       "title": "Tooltip",
