@@ -13,7 +13,7 @@ export default function Page() {
     <div>
       <main className="flex h-screen flex-col items-center justify-center">
         <Gsap.Root>
-          <Gsap.SplitText asChild>
+          <Gsap.SplitText preset="bottom-up" asChild>
             <h1 className="font-black text-9xl">Hello, Bricks</h1>
           </Gsap.SplitText>
         </Gsap.Root>

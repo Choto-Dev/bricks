@@ -23,11 +23,7 @@ function GsapRoot({ children }: { children: React.ReactNode }) {
   return <GsapContext value={value}>{children}</GsapContext>;
 }
 
-type TSplitTextPresets =
-  | "bottom-up"
-  | "scale-up"
-  | "scale-up-stagger"
-  | "drive-in-stagger";
+type TSplitTextPresets = "bottom-up" | "scale-up" | "drive-in" | "drive-in-hot";
 type TApplyPreset = {
   splitText: SplitText.Vars;
   from: GSAPTweenVars;
@@ -67,14 +63,19 @@ function applyPreset(preset: TSplitTextPresets): TApplyPreset {
     "bottom-up": {
       splitText: {
         type: "words, chars, lines",
-        mask: "lines",
       },
       from: {
         y: 100,
+        opacity: 0,
+        scale: 0.3,
       },
       to: {
         y: 0,
-        duration: 0.5,
+        opacity: 1,
+        scale: 1,
+        delay: 0.3,
+        duration: 2,
+        ease: "elastic.out",
       },
     },
     "scale-up": {
@@ -86,23 +87,12 @@ function applyPreset(preset: TSplitTextPresets): TApplyPreset {
       },
       to: {
         scale: 1,
-        duration: 0.5,
-      },
-    },
-    "scale-up-stagger": {
-      splitText: {
-        type: "words, chars, lines",
-      },
-      from: {
-        scale: 0,
-      },
-      to: {
-        scale: 1,
-        duration: 0.5,
+        duration: 0.7,
         stagger: 0.1,
+        ease: "back",
       },
     },
-    "drive-in-stagger": {
+    "drive-in": {
       splitText: {
         type: "words, chars, lines",
       },
@@ -113,8 +103,25 @@ function applyPreset(preset: TSplitTextPresets): TApplyPreset {
       to: {
         x: 0,
         opacity: 1,
-        duration: 0.5,
+        duration: 1,
         stagger: 0.1,
+        ease: "back.out",
+      },
+    },
+    "drive-in-hot": {
+      splitText: {
+        type: "words, chars, lines",
+      },
+      from: {
+        x: 200,
+        scale: 0,
+      },
+      to: {
+        x: 0,
+        scale: 1,
+        duration: 1,
+        stagger: 0.1,
+        ease: "back.out",
       },
     },
   };
