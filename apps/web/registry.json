@@ -119,6 +119,19 @@
       ]
     },
     {
+      "name": "product",
+      "type": "registry:component",
+      "title": "Product",
+      "description": "A component to build product page",
+      "files": [
+        {
+          "path": "src/registry/bricks/components/product.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/product.tsx"
+        }
+      ]
+    },
+    {
       "name": "product-card",
       "type": "registry:component",
       "title": "Product Card",
