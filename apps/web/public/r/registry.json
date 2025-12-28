@@ -92,6 +92,20 @@
       ]
     },
     {
+      "name": "flip-card",
+      "type": "registry:component",
+      "title": "Flip Card",
+      "description": "A component for flipping card.",
+      "dependencies": ["@gsap/react", "gsap"],
+      "files": [
+        {
+          "path": "./src/registry/bricks/components/flip-card.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/flip-card.tsx"
+        }
+      ]
+    },
+    {
       "name": "header",
       "type": "registry:component",
       "title": "Header",
@@ -115,6 +129,19 @@
           "path": "src/registry/bricks/components/loader.tsx",
           "type": "registry:component",
           "target": "components/bricks/loader.tsx"
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "type": "registry:component",
+      "title": "Product",
+      "description": "A component to build product page",
+      "files": [
+        {
+          "path": "src/registry/bricks/components/product.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/product.tsx"
         }
       ]
     },
