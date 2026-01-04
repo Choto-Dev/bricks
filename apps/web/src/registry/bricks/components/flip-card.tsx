@@ -13,6 +13,7 @@ type TFlipCardContext = {
   setFlipCount: React.Dispatch<React.SetStateAction<number>>;
   currentAnimationTime: number;
   setCurrentAnimationTime: React.Dispatch<React.SetStateAction<number>>;
+  duration: number;
 } | null;
 const FlipCardContext = React.createContext<TFlipCardContext>(null);
 function useFlipCardContext() {
@@ -32,6 +33,7 @@ function FlipCardRoot(props: FlipCardRootProps) {
         setFlipCount,
         currentAnimationTime,
         setCurrentAnimationTime,
+        duration: 0.5,
       }}
     >
       <div {...props} className={cn("perspective-distant", props.className)} />
@@ -73,6 +75,7 @@ function FlipCardContainer(props: FlipCardContainerProps) {
         ) {
           cardCtx.tl.to(cardRef.current, {
             rotateY: cardCtx.flipCount * 180,
+            duration: cardCtx.duration,
             onUpdate: () => {
               cardCtx.setCurrentAnimationTime(cardCtx.tl.time());
             },
@@ -98,10 +101,10 @@ function FlipCardFrontCard(props: FlipCardFrontCardProps) {
   return (
     <div
       className={cn(
-        "absolute inset-0 h-full w-full bg-background opacity-100 transition-all",
-        cardCtx.flipCount % 2 !== 1 && "opacity-0",
+        "absolute inset-0 h-full w-full bg-background opacity-0 transition-all",
+        cardCtx.flipCount % 2 === 1 && "opacity-100",
       )}
-      style={{ transitionDuration: "0.5s" }}
+      style={{ transitionDuration: `${cardCtx.duration / 2}s` }}
     >
       <div {...props} className={cn("h-full w-full", props.className)} />
     </div>
@@ -122,7 +125,7 @@ function FlipCardBackCard(props: FlipCardBackCardProps) {
         "absolute inset-0 h-full w-full rotate-y-180 bg-background opacity-0 transition-all",
         cardCtx.flipCount % 2 === 0 && "opacity-100",
       )}
-      style={{ transitionDuration: "0.5s" }}
+      style={{ transitionDuration: `${cardCtx.duration / 2}s` }}
     >
       <div {...props} className={cn("h-full w-full", props.className)} />
     </div>
