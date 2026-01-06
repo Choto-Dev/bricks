@@ -43,17 +43,17 @@
       "registryDependencies": ["button"],
       "files": [
         {
-          "path": "src/registry/bricks/tiptap-editor/components/editor.tsx",
+          "path": "src/registry/bricks/editor/components/editor.tsx",
           "type": "registry:component",
-          "target": "components/bricks/tiptap-editor/editor.tsx"
+          "target": "components/bricks/editor/editor.tsx"
         }
       ]
     },
     {
-      "name": "fuma-mdx",
+      "name": "mdx-docs",
       "type": "registry:item",
-      "title": "Fuma Mdx",
-      "description": "Fuma Mdx doc support.",
+      "title": "Mdx Docs",
+      "description": "Mdx doc support.",
       "dependencies": ["fumadocs-core", "fumadocs-mdx"],
       "devDependencies": ["@types/mdx"],
       "registryDependencies": [
@@ -61,19 +61,24 @@
       ],
       "files": [
         {
-          "path": "src/registry/bricks/fuma-mdx/components/mdx-components.tsx",
+          "path": "src/registry/bricks/mdx-docs/components/docs.tsx",
           "type": "registry:component",
-          "target": "components/bricks/fuma-mdx/mdx-components.tsx"
+          "target": "components/bricks/mdx-docs/docs.tsx"
         },
         {
-          "path": "src/registry/bricks/fuma-mdx/lib/source.config.ts",
-          "type": "registry:lib",
-          "target": "lib/bricks/fuma-mdx/source.config.ts"
+          "path": "src/registry/bricks/mdx-docs/components/mdx-components.tsx",
+          "type": "registry:component",
+          "target": "components/bricks/mdx-docs/mdx-components.tsx"
         },
         {
-          "path": "src/registry/bricks/fuma-mdx/lib/source.ts",
+          "path": "src/registry/bricks/mdx-docs/lib/source.config.ts",
           "type": "registry:lib",
-          "target": "lib/bricks/fuma-mdx/source.ts"
+          "target": "lib/bricks/mdx-docs/source.config.ts"
+        },
+        {
+          "path": "src/registry/bricks/mdx-docs/lib/source.ts",
+          "type": "registry:lib",
+          "target": "lib/bricks/mdx-docs/source.ts"
         }
       ]
     },

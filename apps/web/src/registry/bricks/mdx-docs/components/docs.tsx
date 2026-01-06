@@ -35,7 +35,7 @@ function groupMenuBySeparetor(menu: PageTree.Node[]): GroupedMenu[] {
   return result;
 }
 
-type TDocsLayoutContext = {};
+type TDocsLayoutContext = unknown;
 const DocsLayoutContext = React.createContext<TDocsLayoutContext | null>(null);
 
 type DocsRootProps = { children: React.ReactNode };
