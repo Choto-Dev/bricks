@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getMDXComponents } from "@/registry/bricks/fuma-mdx/components/mdx-components";
-import { source } from "@/registry/bricks/fuma-mdx/lib/source";
+import { getMDXComponents } from "@/registry/bricks/mdx-docs/components/mdx-components";
+import { source } from "@/registry/bricks/mdx-docs/lib/source";
 
 export async function generateMetadata(
   props: PageProps<"/docs/[[...slug]]">,

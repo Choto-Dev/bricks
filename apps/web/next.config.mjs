@@ -1,7 +1,7 @@
 import { createMDX } from "fumadocs-mdx/next";
 
 const withMDX = createMDX({
-  configPath: "./src/registry/bricks/fuma-mdx/lib/source.config.ts",
+  configPath: "./src/registry/bricks/mdx-docs/lib/source.config.ts",
 });
 
 /** @type {import('next').NextConfig} */

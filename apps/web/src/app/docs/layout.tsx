@@ -1,5 +1,5 @@
-import * as Docs from "@/registry/bricks/fuma-mdx/components/docs";
-import { source } from "@/registry/bricks/fuma-mdx/lib/source";
+import * as Docs from "@/registry/bricks/mdx-docs/components/docs";
+import { source } from "@/registry/bricks/mdx-docs/lib/source";
 
 export default async function Layout(props: LayoutProps<"/docs">) {
   const menu = source.docs.pageTree;
