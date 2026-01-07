@@ -40,7 +40,7 @@ const tooltipContentVariants = cva(
         default: "bg-primary text-primary-foreground",
         secondary: "bg-secondary text-secondary-foreground",
         outline:
-          "border border-foreground bg-background text-foreground dark:border-input dark:bg-input/30",
+          "border bg-background text-foreground shadow-xs dark:border-input dark:bg-input/30",
       },
     },
     defaultVariants: {
@@ -56,7 +56,7 @@ const tooltipArrowVariants = cva(
         default: "bg-foreground fill-foreground",
         secondary: "bg-secondary fill-secondary",
         outline:
-          "translate-y-[calc(-50%)] rounded-none border-foreground border-r border-b bg-background fill-background",
+          "translate-y-[calc(-50%)] rounded-none border-border border-r border-b bg-background fill-background",
       },
     },
     defaultVariants: {

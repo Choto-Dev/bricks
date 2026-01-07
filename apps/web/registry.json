@@ -57,7 +57,10 @@
       "dependencies": ["fumadocs-core", "fumadocs-mdx"],
       "devDependencies": ["@types/mdx"],
       "registryDependencies": [
-        "https://choto-bricks.vercel.app/r/article.json"
+        "button",
+        "sidebar",
+        "https://choto-bricks.vercel.app/r/article.json",
+        "https://choto-bricks.vercel.app/r/tooltip.json"
       ],
       "files": [
         {
@@ -69,6 +72,11 @@
           "path": "src/registry/bricks/mdx-docs/components/mdx-components.tsx",
           "type": "registry:component",
           "target": "components/bricks/mdx-docs/mdx-components.tsx"
+        },
+        {
+          "path": "src/registry/bricks/mdx-docs/lib/search.ts",
+          "type": "registry:lib",
+          "target": "lib/bricks/mdx-docs/search.ts"
         },
         {
           "path": "src/registry/bricks/mdx-docs/lib/source.config.ts",
