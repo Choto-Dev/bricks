@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { componentDemos } from "./_components";
 
 export default function Page() {
@@ -11,16 +13,17 @@ export default function Page() {
           return (
             <div key={key} className="space-y-3 py-2">
               <div className="flex items-center justify-between">
-                <div className="flex gap-2">
+                <div className="flex items-center gap-2">
                   <h1 className="font-semibold text-xl">{comp.name}</h1>
                   <Badge className="min-w-7 rounded-full">
                     {comp.demos.length}
                   </Badge>
                 </div>
 
-                <div className="flex gap-2">
-                  <div>Full Component</div>
-                  <div>{comp.demos.length}</div>
+                <div className="flex items-center gap-2">
+                  <Button variant={"link"} asChild>
+                    <Link href={comp.url}>Visit</Link>
+                  </Button>
                 </div>
               </div>
 

@@ -10,12 +10,12 @@ export default async function Page(props: PageProps<"/components/[name]">) {
   }
 
   return (
-    <div>
+    <main className="h-screen min-h-screen">
       {componentDemo.demos.map((demo) => {
         const Component = demo.component;
 
         return <Component key={demo.name} />;
       })}
-    </div>
+    </main>
   );
 }

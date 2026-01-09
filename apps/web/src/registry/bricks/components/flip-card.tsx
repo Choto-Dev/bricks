@@ -36,7 +36,10 @@ function FlipCardRoot(props: FlipCardRootProps) {
         duration: 0.5,
       }}
     >
-      <div {...props} className={cn("perspective-distant", props.className)} />
+      <div
+        {...props}
+        className={cn("perspective-distant bg-transparent", props.className)}
+      />
     </FlipCardContext>
   );
 }
@@ -58,7 +61,7 @@ function FlipCardContainer(props: FlipCardContainerProps) {
       {...props}
       ref={cardRef}
       className={cn(
-        "relative flex min-h-52 min-w-40 items-center justify-center",
+        "relative flex min-h-52 min-w-40 items-center justify-center bg-transparent",
         props.className,
       )}
       onMouseDown={(e) => {
@@ -101,7 +104,7 @@ function FlipCardFrontCard(props: FlipCardFrontCardProps) {
   return (
     <div
       className={cn(
-        "absolute inset-0 h-full w-full bg-background opacity-0 transition-all",
+        "absolute inset-0 h-full w-full bg-transparent opacity-0 transition-all",
         cardCtx.flipCount % 2 === 1 && "opacity-100",
       )}
       style={{ transitionDuration: `${cardCtx.duration / 2}s` }}
@@ -122,7 +125,7 @@ function FlipCardBackCard(props: FlipCardBackCardProps) {
   return (
     <div
       className={cn(
-        "absolute inset-0 h-full w-full rotate-y-180 bg-background opacity-0 transition-all",
+        "absolute inset-0 h-full w-full rotate-y-180 bg-transparent opacity-0 transition-all",
         cardCtx.flipCount % 2 === 0 && "opacity-100",
       )}
       style={{ transitionDuration: `${cardCtx.duration / 2}s` }}

@@ -9,6 +9,9 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
   reactStrictMode: true,
+  images: {
+    remotePatterns: [new URL("https://i.ibb.co.com/**")],
+  },
 };
 
 export default withMDX(nextConfig);

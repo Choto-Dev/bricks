@@ -1,5 +1,7 @@
 import type React from "react";
 import { ArticleDemo0 } from "./_components/article-demo";
+import { FlipCardDemo0 } from "./_components/flip-card-demo";
+import { SectionDemo0 } from "./_components/section-demo";
 
 type TConponents = {
   name: string;
@@ -20,6 +22,26 @@ export const componentDemos: Record<string, TConponents> = {
         component: ArticleDemo0,
       },
     ],
-    url: "/demo/article",
+    url: "/components/article",
+  },
+  "flip-card": {
+    name: "Flip Card",
+    demos: [
+      {
+        name: "Demo 01",
+        component: FlipCardDemo0,
+      },
+    ],
+    url: "/components/flip-card",
+  },
+  section: {
+    name: "Section",
+    demos: [
+      {
+        name: "Demo 01",
+        component: SectionDemo0,
+      },
+    ],
+    url: "/components/section",
   },
 };
