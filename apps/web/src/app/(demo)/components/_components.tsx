@@ -1,5 +1,5 @@
 import type React from "react";
-import { ArticleDemo01 } from "./_components/article-demo";
+import { ArticleDemo0 } from "./_components/article-demo";
 
 type TConponents = {
   name: string;
@@ -14,10 +14,12 @@ type TConponents = {
 export const componentDemos: Record<string, TConponents> = {
   article: {
     name: "Article",
-    demos: [{
-      name: "Demo 01",
-      component: ArticleDemo01
-    }],
+    demos: [
+      {
+        name: "Demo 01",
+        component: ArticleDemo0,
+      },
+    ],
     url: "/demo/article",
   },
 };

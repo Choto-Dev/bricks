@@ -13,7 +13,11 @@ import * as Article from "@/registry/bricks/components/article";
  */
 
 const defaultMdxComponents: MDXComponents = {
+  a: Article.Link,
   blockquote: Article.Blockquote,
+  Br: Article.Br,
+  del: Article.Strike,
+  em: Article.Italic,
   h1: Article.Title,
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <Article.Heading headingLevel="level-1" {...props} />
@@ -30,16 +34,10 @@ const defaultMdxComponents: MDXComponents = {
   h6: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <Article.Heading headingLevel="level-5" {...props} />
   ),
-  p: Article.Paragraph,
-  a: Article.Link,
+  Hr: Article.Hr,
   img: (props: ImageProps) => <Image {...props} />,
-  ol: Article.Ol,
-  ul: (props: React.HTMLAttributes<HTMLUListElement>) => {
-    if (props.className?.includes("contains-task-list")) {
-      return <Article.Ul variant={"task-list"} {...props} />;
-    }
-    return <Article.Ul {...props} />;
-  },
+  input: Article.TaskCheckbox,
+  Kbd: Article.Kbd,
   li: (props: React.HTMLAttributes<HTMLLIElement>) => {
     if (props.className?.includes("task-list-item")) {
       return (
@@ -51,7 +49,21 @@ const defaultMdxComponents: MDXComponents = {
     }
     return <Article.Li {...props} />;
   },
-  input: Article.TaskCheckbox,
+  Mark: Article.Mark,
+  ol: Article.Ol,
+  p: Article.Paragraph,
+  strong: Article.Bold,
+  Sub: Article.Sub,
+  Sup: Article.Sup,
+  U: (props: React.HTMLAttributes<HTMLElement>) => (
+    <Article.Underline {...props} />
+  ),
+  ul: (props: React.HTMLAttributes<HTMLUListElement>) => {
+    if (props.className?.includes("contains-task-list")) {
+      return <Article.Ul variant={"task-list"} {...props} />;
+    }
+    return <Article.Ul {...props} />;
+  },
 };
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {

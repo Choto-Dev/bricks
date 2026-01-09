@@ -38,6 +38,29 @@ function ArticleBlockquote(props: ArticleBlockquoteProps) {
   );
 }
 
+type ArticleBoldProps = React.ComponentPropsWithRef<"strong">;
+function ArticleBold(props: ArticleBoldProps) {
+  return <strong {...props} className={cn("font-bold", props.className)} />;
+}
+
+type ArticleBrProps = React.ComponentPropsWithRef<"br">;
+function ArticleBr(props: ArticleBrProps) {
+  return <br {...props} className={cn("", props.className)} />;
+}
+
+type ArticleCodeProps = React.ComponentPropsWithRef<"code">;
+function ArticleCode(props: ArticleCodeProps) {
+  return (
+    <code
+      {...props}
+      className={cn(
+        "rounded-xs bg-muted-foreground/30 px-1 font-mono text-sm",
+        props.className,
+      )}
+    />
+  );
+}
+
 type ArticleH1Props = React.ComponentPropsWithRef<"h1">;
 function ArticleH1(props: ArticleH1Props) {
   return (
@@ -80,9 +103,85 @@ function ArticleH6(props: ArticleH6Props) {
   );
 }
 
+type ArticleHrProps = React.ComponentPropsWithRef<"hr">;
+function ArticleHr(props: ArticleHrProps) {
+  return (
+    <hr
+      {...props}
+      className={cn("h-0 border-border border-t", props.className)}
+    />
+  );
+}
+
+type ArticleItalicProps = React.ComponentPropsWithRef<"em">;
+function ArticleItalic(props: ArticleItalicProps) {
+  return <em {...props} className={cn("italic", props.className)} />;
+}
+
+type ArticleKbdProps = React.ComponentPropsWithRef<"kbd">;
+function ArticleKbd(props: ArticleKbdProps) {
+  return (
+    <kbd
+      {...props}
+      className={cn(
+        "pointer-events-none inline-flex h-5 w-fit min-w-5 select-none items-center justify-center gap-1 rounded-sm border border-muted-foreground/50 border-b-3 border-b-muted-foreground/50 bg-muted px-1 font-medium font-sans text-muted-foreground text-xs",
+        "[&_svg:not([class*='size-'])]:size-3",
+        "[data-slot=tooltip-content]_&]:text-background dark:[data-slot=tooltip-content]_&]:bg-background/10 [data-slot=tooltip-content]_&:bg-background/20",
+        props.className,
+      )}
+    />
+  );
+}
+
+type ArticleMarkProps = React.ComponentPropsWithRef<"mark">;
+function ArticleMark(props: ArticleMarkProps) {
+  return (
+    <mark
+      {...props}
+      className={cn("bg-muted-foreground text-background", props.className)}
+    />
+  );
+}
+
 type ArticlePProps = React.ComponentPropsWithRef<"h1">;
 function ArticleP(props: ArticlePProps) {
   return <p {...props} />;
+}
+
+type ArticleStrikeProps = React.ComponentPropsWithRef<"del">;
+function ArticleStrike(props: ArticleStrikeProps) {
+  return <del {...props} className={cn("line-through", props.className)} />;
+}
+
+type ArticleSubscriptProps = React.ComponentPropsWithRef<"sub">;
+function ArticleSub(props: ArticleSubscriptProps) {
+  return (
+    <sub
+      {...props}
+      className={cn(
+        "-bottom-[0.25em] relative align-baseline text-[75%]",
+        props.className,
+      )}
+    />
+  );
+}
+
+type ArticleSuperscriptProps = React.ComponentPropsWithRef<"sup">;
+function ArticleSuper(props: ArticleSuperscriptProps) {
+  return (
+    <sup
+      className={cn(
+        "-top-[0.5em] relative align-baseline text-[75%]",
+        props.className,
+      )}
+      {...props}
+    />
+  );
+}
+
+type ArticleUnderlineProps = React.ComponentPropsWithRef<"u">;
+function ArticleUnderline(props: ArticleUnderlineProps) {
+  return <u {...props} className={cn("underline", props.className)} />;
 }
 
 type ArticleTextStyleProps = React.ComponentPropsWithRef<"span"> & {
@@ -324,13 +423,24 @@ function ArticleTask({ checked = false, ...props }: ArticleTaskProps) {
 export {
   ArticleRoot as Root,
   ArticleBlockquote as Blockquote,
+  ArticleBold as Bold,
+  ArticleBr as Br,
+  ArticleCode as Code,
   ArticleH1 as H1,
   ArticleH2 as H2,
   ArticleH3 as H3,
   ArticleH4 as H4,
   ArticleH5 as H5,
   ArticleH6 as H6,
+  ArticleHr as Hr,
+  ArticleItalic as Italic,
+  ArticleKbd as Kbd,
+  ArticleMark as Mark,
   ArticleP as P,
+  ArticleStrike as Strike,
+  ArticleSub as Sub,
+  ArticleSuper as Sup,
+  ArticleUnderline as Underline,
   ArticleTextStyle as TextStyle,
   ArticleOl as Ol,
   ArticleUl as Ul,
