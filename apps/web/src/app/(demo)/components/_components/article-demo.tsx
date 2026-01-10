@@ -9,7 +9,7 @@ export function ArticleDemo0() {
           Helpful component to style article like content.
         </Article.Subtitle>
 
-        <Article.Heading headingLevel="level-1">Introduction</Article.Heading>
+        <Article.Heading headingLevel="1">Introduction</Article.Heading>
         <Article.Paragraph>
           Article is composed of multiple components, each providing styled
           wrappers for text elements. It contains simple styled components like{" "}
@@ -19,13 +19,13 @@ export function ArticleDemo0() {
           <Article.Code>Heading</Article.Code>.
         </Article.Paragraph>
 
-        <Article.Heading headingLevel="level-1">Example</Article.Heading>
+        <Article.Heading headingLevel="1">Example</Article.Heading>
         <Article.Paragraph>
           Here is an some example. To see more example visit{" "}
           <Article.Link href="/components/article">here</Article.Link>
         </Article.Paragraph>
 
-        <Article.Heading headingLevel="level-3">Task List</Article.Heading>
+        <Article.Heading headingLevel="3">Task List</Article.Heading>
         <Article.Ul>
           <Article.Task checked>Eat</Article.Task>
           <Article.Task checked>Sleep</Article.Task>

@@ -21,7 +21,7 @@ function useFlipCardContext() {
 }
 
 type FlipCardRootProps = React.ComponentPropsWithRef<"div">;
-function FlipCardRoot(props: FlipCardRootProps) {
+function FlipCardRoot({ className, ...props }: FlipCardRootProps) {
   const [flipCount, setFlipCount] = React.useState(1);
   const [currentAnimationTime, setCurrentAnimationTime] = React.useState(0);
 
@@ -38,14 +38,14 @@ function FlipCardRoot(props: FlipCardRootProps) {
     >
       <div
         {...props}
-        className={cn("perspective-distant bg-transparent", props.className)}
+        className={cn("perspective-distant bg-transparent", className)}
       />
     </FlipCardContext>
   );
 }
 
 type FlipCardContainerProps = React.ComponentPropsWithRef<"div">;
-function FlipCardContainer(props: FlipCardContainerProps) {
+function FlipCardContainer({ className, ...props }: FlipCardContainerProps) {
   const cardCtx = useFlipCardContext();
 
   if (!cardCtx) {
@@ -62,7 +62,7 @@ function FlipCardContainer(props: FlipCardContainerProps) {
       ref={cardRef}
       className={cn(
         "relative flex min-h-52 min-w-40 items-center justify-center bg-transparent",
-        props.className,
+        className,
       )}
       onMouseDown={(e) => {
         if (e.detail > 1) {
@@ -94,7 +94,7 @@ function FlipCardContainer(props: FlipCardContainerProps) {
 }
 
 type FlipCardFrontCardProps = React.ComponentPropsWithRef<"div">;
-function FlipCardFrontCard(props: FlipCardFrontCardProps) {
+function FlipCardFrontCard({ className, ...props }: FlipCardFrontCardProps) {
   const cardCtx = useFlipCardContext();
 
   if (!cardCtx) {
@@ -109,13 +109,13 @@ function FlipCardFrontCard(props: FlipCardFrontCardProps) {
       )}
       style={{ transitionDuration: `${cardCtx.duration / 2}s` }}
     >
-      <div {...props} className={cn("h-full w-full", props.className)} />
+      <div {...props} className={cn("h-full w-full", className)} />
     </div>
   );
 }
 
 type FlipCardBackCardProps = React.ComponentPropsWithRef<"div">;
-function FlipCardBackCard(props: FlipCardBackCardProps) {
+function FlipCardBackCard({ className, ...props }: FlipCardBackCardProps) {
   const cardCtx = useFlipCardContext();
 
   if (!cardCtx) {
@@ -130,7 +130,7 @@ function FlipCardBackCard(props: FlipCardBackCardProps) {
       )}
       style={{ transitionDuration: `${cardCtx.duration / 2}s` }}
     >
-      <div {...props} className={cn("h-full w-full", props.className)} />
+      <div {...props} className={cn("h-full w-full", className)} />
     </div>
   );
 }

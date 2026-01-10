@@ -30,7 +30,7 @@ const sectionRootVariants = cva("flex min-h-96 flex-col space-y-10", {
 });
 type SectionRootProps = React.ComponentPropsWithRef<"section"> &
   VariantProps<typeof sectionRootVariants>;
-function SectionRoot(props: SectionRootProps) {
+function SectionRoot({ className, ...props }: SectionRootProps) {
   const value: TSectionContext = {
     align: props.align,
   };
@@ -41,7 +41,7 @@ function SectionRoot(props: SectionRootProps) {
       className={cn(
         sectionRootVariants({
           align: props.align,
-          className: props.className,
+          className: className,
         }),
       )}
       style={{
@@ -75,7 +75,7 @@ const sectionHeaderVariants = cva(
   },
 );
 type SectionHeaderProps = React.ComponentPropsWithRef<"div">;
-function SectionHeader(props: SectionHeaderProps) {
+function SectionHeader({ className, ...props }: SectionHeaderProps) {
   const { align } = React.useContext(SectionContext);
 
   return (
@@ -84,7 +84,7 @@ function SectionHeader(props: SectionHeaderProps) {
       className={cn(
         sectionHeaderVariants({
           align,
-          className: props.className,
+          className: className,
         }),
       )}
     />
@@ -115,7 +115,7 @@ const sectionTitleVariants = cva("max-w-xl text-balance font-semibold", {
 });
 type SectionTitleProps = React.ComponentPropsWithRef<"h1"> &
   VariantProps<typeof sectionTitleVariants>;
-function SectionTitle(props: SectionTitleProps) {
+function SectionTitle({ className, ...props }: SectionTitleProps) {
   return (
     <h1
       {...props}
@@ -123,7 +123,7 @@ function SectionTitle(props: SectionTitleProps) {
         sectionTitleVariants({
           textsize: props.textsize,
           textweight: props.textweight,
-          className: props.className,
+          className: className,
         }),
       )}
     />
@@ -131,15 +131,13 @@ function SectionTitle(props: SectionTitleProps) {
 }
 
 type SectionSubtitleProps = React.ComponentPropsWithRef<"p">;
-function SectionSubtitle(props: SectionSubtitleProps) {
-  return (
-    <p {...props} className={cn("text-balance text-xl", props.className)} />
-  );
+function SectionSubtitle({ className, ...props }: SectionSubtitleProps) {
+  return <p {...props} className={cn("text-balance text-xl", className)} />;
 }
 
 type SectionContentProps = React.ComponentPropsWithRef<"div">;
-function SectionContent(props: SectionContentProps) {
-  return <div {...props} className={cn("max-w-7xl", props.className)} />;
+function SectionContent({ className, ...props }: SectionContentProps) {
+  return <div {...props} className={cn("max-w-7xl", className)} />;
 }
 
 export {

@@ -3,19 +3,19 @@ import type React from "react";
 import { cn } from "@/lib/utils";
 
 type HeaderRootProps = React.ComponentPropsWithRef<"header">;
-function HeaderRoot(props: HeaderRootProps) {
+function HeaderRoot({ className, ...props }: HeaderRootProps) {
   return <header {...props} />;
 }
 
 type HeaderNavProps = React.ComponentPropsWithRef<"ul">;
-function HeaderNav(props: HeaderNavProps) {
+function HeaderNav({ className, ...props }: HeaderNavProps) {
   return (
     <nav className="flex w-fit items-center justify-center">
       <ul
         {...props}
         className={cn(
           "flex list-none items-center justify-center gap-5",
-          props.className,
+          className,
         )}
       />
     </nav>

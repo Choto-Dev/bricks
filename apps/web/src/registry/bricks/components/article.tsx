@@ -2,7 +2,6 @@ import type * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Link as LinkIcon } from "lucide-react";
 import type React from "react";
-import type { CSSProperties } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 
@@ -13,11 +12,11 @@ import { cn } from "@/lib/utils";
  */
 
 type ArticleRootProps = React.ComponentPropsWithRef<"article">;
-function ArticleRoot(props: ArticleRootProps) {
+function ArticleRoot({ className, ...props }: ArticleRootProps) {
   return (
     <article
       {...props}
-      className={cn("mx-auto w-full max-w-2xl space-y-4", props.className)}
+      className={cn("mx-auto w-full max-w-2xl space-y-4", className)}
     />
   );
 }
@@ -26,100 +25,85 @@ function ArticleRoot(props: ArticleRootProps) {
 // ==== Text Components ====
 // =========================
 type ArticleBlockquoteProps = React.ComponentPropsWithRef<"blockquote">;
-function ArticleBlockquote(props: ArticleBlockquoteProps) {
+function ArticleBlockquote({ className, ...props }: ArticleBlockquoteProps) {
   return (
     <blockquote
       {...props}
       className={cn(
         "my-2.5 border-muted-foreground border-l-4 px-5 py-2.5 [&>p]:pb-0",
-        props.className,
+        className,
       )}
     />
   );
 }
 
 type ArticleBoldProps = React.ComponentPropsWithRef<"strong">;
-function ArticleBold(props: ArticleBoldProps) {
-  return <strong {...props} className={cn("font-bold", props.className)} />;
+function ArticleBold({ className, ...props }: ArticleBoldProps) {
+  return <strong {...props} className={cn("font-bold", className)} />;
 }
 
 type ArticleBrProps = React.ComponentPropsWithRef<"br">;
-function ArticleBr(props: ArticleBrProps) {
-  return <br {...props} className={cn("", props.className)} />;
+function ArticleBr({ className, ...props }: ArticleBrProps) {
+  return <br {...props} className={cn("", className)} />;
 }
 
 type ArticleCodeProps = React.ComponentPropsWithRef<"code">;
-function ArticleCode(props: ArticleCodeProps) {
+function ArticleCode({ className, ...props }: ArticleCodeProps) {
   return (
     <code
       {...props}
       className={cn(
         "rounded-xs bg-muted-foreground/30 px-1 font-mono text-sm",
-        props.className,
+        className,
       )}
     />
   );
 }
 
 type ArticleH1Props = React.ComponentPropsWithRef<"h1">;
-function ArticleH1(props: ArticleH1Props) {
-  return (
-    <h1 {...props} className={cn("font-bold text-6xl", props.className)} />
-  );
+function ArticleH1({ className, ...props }: ArticleH1Props) {
+  return <h1 {...props} className={cn("font-bold text-6xl", className)} />;
 }
 
 type ArticleH2Props = React.ComponentPropsWithRef<"h2">;
-function ArticleH2(props: ArticleH2Props) {
-  return (
-    <h2 {...props} className={cn("font-semibold text-4xl", props.className)} />
-  );
+function ArticleH2({ className, ...props }: ArticleH2Props) {
+  return <h2 {...props} className={cn("font-semibold text-4xl", className)} />;
 }
 
 type ArticleH3Props = React.ComponentPropsWithRef<"h3">;
-function ArticleH3(props: ArticleH3Props) {
-  return (
-    <h3 {...props} className={cn("font-semibold text-3xl", props.className)} />
-  );
+function ArticleH3({ className, ...props }: ArticleH3Props) {
+  return <h3 {...props} className={cn("font-semibold text-3xl", className)} />;
 }
 
 type ArticleH4Props = React.ComponentPropsWithRef<"h4">;
-function ArticleH4(props: ArticleH4Props) {
-  return (
-    <h4 {...props} className={cn("font-semibold text-2xl", props.className)} />
-  );
+function ArticleH4({ className, ...props }: ArticleH4Props) {
+  return <h4 {...props} className={cn("font-semibold text-2xl", className)} />;
 }
 
 type ArticleH5Props = React.ComponentPropsWithRef<"h5">;
-function ArticleH5(props: ArticleH5Props) {
-  return (
-    <h5 {...props} className={cn("font-semibold text-xl", props.className)} />
-  );
+function ArticleH5({ className, ...props }: ArticleH5Props) {
+  return <h5 {...props} className={cn("font-semibold text-xl", className)} />;
 }
 
 type ArticleH6Props = React.ComponentPropsWithRef<"h6">;
-function ArticleH6(props: ArticleH6Props) {
-  return (
-    <h6 {...props} className={cn("font-semibold text-lg", props.className)} />
-  );
+function ArticleH6({ className, ...props }: ArticleH6Props) {
+  return <h6 {...props} className={cn("font-semibold text-lg", className)} />;
 }
 
 type ArticleHrProps = React.ComponentPropsWithRef<"hr">;
-function ArticleHr(props: ArticleHrProps) {
+function ArticleHr({ className, ...props }: ArticleHrProps) {
   return (
-    <hr
-      {...props}
-      className={cn("h-0 border-border border-t", props.className)}
-    />
+    <hr {...props} className={cn("h-0 border-border border-t", className)} />
   );
 }
 
 type ArticleItalicProps = React.ComponentPropsWithRef<"em">;
-function ArticleItalic(props: ArticleItalicProps) {
-  return <em {...props} className={cn("italic", props.className)} />;
+function ArticleItalic({ className, ...props }: ArticleItalicProps) {
+  return <em {...props} className={cn("italic", className)} />;
 }
 
 type ArticleKbdProps = React.ComponentPropsWithRef<"kbd">;
-function ArticleKbd(props: ArticleKbdProps) {
+function ArticleKbd({ className, ...props }: ArticleKbdProps) {
   return (
     <kbd
       {...props}
@@ -127,52 +111,52 @@ function ArticleKbd(props: ArticleKbdProps) {
         "pointer-events-none inline-flex h-5 w-fit min-w-5 select-none items-center justify-center gap-1 rounded-sm border border-muted-foreground/50 border-b-3 border-b-muted-foreground/50 bg-muted px-1 font-medium font-sans text-muted-foreground text-xs",
         "[&_svg:not([class*='size-'])]:size-3",
         "[data-slot=tooltip-content]_&]:text-background dark:[data-slot=tooltip-content]_&]:bg-background/10 [data-slot=tooltip-content]_&:bg-background/20",
-        props.className,
+        className,
       )}
     />
   );
 }
 
 type ArticleMarkProps = React.ComponentPropsWithRef<"mark">;
-function ArticleMark(props: ArticleMarkProps) {
+function ArticleMark({ className, ...props }: ArticleMarkProps) {
   return (
     <mark
       {...props}
-      className={cn("bg-muted-foreground text-background", props.className)}
+      className={cn("bg-muted-foreground text-background", className)}
     />
   );
 }
 
 type ArticlePProps = React.ComponentPropsWithRef<"h1">;
-function ArticleP(props: ArticlePProps) {
+function ArticleP({ className, ...props }: ArticlePProps) {
   return <p {...props} />;
 }
 
 type ArticleStrikeProps = React.ComponentPropsWithRef<"del">;
-function ArticleStrike(props: ArticleStrikeProps) {
-  return <del {...props} className={cn("line-through", props.className)} />;
+function ArticleStrike({ className, ...props }: ArticleStrikeProps) {
+  return <del {...props} className={cn("line-through", className)} />;
 }
 
 type ArticleSubscriptProps = React.ComponentPropsWithRef<"sub">;
-function ArticleSub(props: ArticleSubscriptProps) {
+function ArticleSub({ className, ...props }: ArticleSubscriptProps) {
   return (
     <sub
       {...props}
       className={cn(
         "-bottom-[0.25em] relative align-baseline text-[75%]",
-        props.className,
+        className,
       )}
     />
   );
 }
 
 type ArticleSuperscriptProps = React.ComponentPropsWithRef<"sup">;
-function ArticleSuper(props: ArticleSuperscriptProps) {
+function ArticleSuper({ className, ...props }: ArticleSuperscriptProps) {
   return (
     <sup
       className={cn(
         "-top-[0.5em] relative align-baseline text-[75%]",
-        props.className,
+        className,
       )}
       {...props}
     />
@@ -180,59 +164,8 @@ function ArticleSuper(props: ArticleSuperscriptProps) {
 }
 
 type ArticleUnderlineProps = React.ComponentPropsWithRef<"u">;
-function ArticleUnderline(props: ArticleUnderlineProps) {
-  return <u {...props} className={cn("underline", props.className)} />;
-}
-
-type ArticleTextStyleProps = React.ComponentPropsWithRef<"span"> & {
-  bold?: boolean;
-  italic?: boolean;
-  underline?: boolean;
-  strikethrough?: boolean;
-  subscript?: boolean;
-  superscript?: boolean;
-};
-function ArticleTextStyle({
-  bold,
-  italic,
-  underline,
-  strikethrough,
-  subscript,
-  superscript,
-  ...props
-}: ArticleTextStyleProps) {
-  const styles: CSSProperties = {};
-
-  if (subscript && superscript && process.env.NODE_ENV === "development") {
-    throw new Error("Can not pass both `subscript` and `superscript`.");
-  }
-
-  if (underline) {
-    styles.textDecorationLine = "underline";
-    styles.textUnderlineOffset = "4px";
-  }
-  if (strikethrough) {
-    styles.textDecorationLine = "line-through";
-  }
-  if (underline && strikethrough) {
-    styles.textDecorationLine = "underline line-through";
-    styles.textUnderlineOffset = "4px";
-  }
-
-  return (
-    <span
-      {...props}
-      className={cn(
-        "",
-        bold && "font-bold",
-        italic && "italic",
-        subscript && "align-sub text-[12px]",
-        superscript && "align-super text-[12px]",
-        props.className,
-      )}
-      style={styles}
-    />
-  );
+function ArticleUnderline({ className, ...props }: ArticleUnderlineProps) {
+  return <u {...props} className={cn("underline", className)} />;
 }
 
 // =========================
@@ -255,14 +188,14 @@ const articleOlVariant = cva("list-outside pl-5 marker:text-foreground/80", {
 });
 type ArticleOlProps = React.ComponentPropsWithRef<"ol"> &
   VariantProps<typeof articleOlVariant>;
-function ArticleOl(props: ArticleOlProps) {
+function ArticleOl({ className, ...props }: ArticleOlProps) {
   return (
     <ol
       {...props}
       className={cn(
         articleOlVariant({
           variant: props.variant,
-          className: props.className,
+          className: className,
         }),
       )}
     />
@@ -284,14 +217,14 @@ const articleUlVariant = cva("list-outside pl-5 marker:text-foreground/80", {
 });
 type ArticleUlProps = React.ComponentPropsWithRef<"ul"> &
   VariantProps<typeof articleUlVariant>;
-function ArticleUl(props: ArticleUlProps) {
+function ArticleUl({ className, ...props }: ArticleUlProps) {
   return (
     <ul
       {...props}
       className={cn(
         articleUlVariant({
           variant: props.variant,
-          className: props.className,
+          className: className,
         }),
       )}
     />
@@ -299,7 +232,7 @@ function ArticleUl(props: ArticleUlProps) {
 }
 
 type ArticleLiProps = React.ComponentPropsWithRef<"li">;
-function ArticleLi(props: ArticleLiProps) {
+function ArticleLi({ className, ...props }: ArticleLiProps) {
   return <li {...props} />;
 }
 
@@ -322,20 +255,20 @@ function ArticleTaskCheckbox({ ...props }: ArticleTaskCheckboxProps) {
 }
 
 type ArticleLinkProps = React.ComponentPropsWithRef<"a">;
-function ArticleLink(props: ArticleLinkProps) {
+function ArticleLink({ className, ...props }: ArticleLinkProps) {
   return (
     <a
       {...props}
       className={cn(
         "font-medium underline underline-offset-4 transition-all hover:text-primary/80",
-        props.className,
+        className,
       )}
     />
   );
 }
 
 type ArticleImageProps = React.ComponentPropsWithRef<"img">;
-function ArticleImage(props: ArticleImageProps) {
+function ArticleImage({ className, ...props }: ArticleImageProps) {
   // biome-ignore lint/performance/noImgElement: <"Allow">
   // biome-ignore lint/a11y/useAltText: <"Allow">
   return <img loading="lazy" {...props} />;
@@ -344,20 +277,17 @@ function ArticleImage(props: ArticleImageProps) {
 // ====================================
 // ==== Complex Article Components ====
 // ====================================
-function ArticleTitle(props: ArticleH1Props) {
+function ArticleTitle({ className, ...props }: ArticleH1Props) {
   return (
-    <ArticleH1
-      {...props}
-      className={cn("font-bold text-6xl", props.className)}
-    />
+    <ArticleH1 {...props} className={cn("font-bold text-6xl", className)} />
   );
 }
 
-function ArticleSubtitle(props: ArticlePProps) {
+function ArticleSubtitle({ className, ...props }: ArticlePProps) {
   return (
     <ArticleP
       {...props}
-      className={cn("pb-4 text-lg text-muted-foreground", props.className)}
+      className={cn("pb-4 text-lg text-muted-foreground", className)}
     />
   );
 }
@@ -367,27 +297,28 @@ type ArticleHeadingProps = ArticleH2Props &
   ArticleH4Props &
   ArticleH5Props &
   ArticleH6Props & {
-    headingLevel?: "level-1" | "level-2" | "level-3" | "level-4" | "level-5";
+    headingLevel?: "1" | "2" | "3" | "4" | "5";
   };
 function ArticleHeading({
-  headingLevel = "level-1",
+  className,
+  headingLevel = "1",
   ...props
 }: ArticleHeadingProps) {
   const Comp =
-    headingLevel === "level-1"
+    headingLevel === "1"
       ? ArticleH2
-      : headingLevel === "level-2"
+      : headingLevel === "2"
         ? ArticleH3
-        : headingLevel === "level-3"
+        : headingLevel === "3"
           ? ArticleH4
-          : headingLevel === "level-4"
+          : headingLevel === "4"
             ? ArticleH5
             : ArticleH6;
 
   return (
     <Comp
       {...props}
-      className={cn("flex scroll-m-10 items-center gap-2", props.className)}
+      className={cn("flex scroll-m-10 items-center gap-2", className)}
     >
       <a href={`#${props.id ? props.id : props.children}`} className="peer">
         {props.children}
@@ -397,21 +328,25 @@ function ArticleHeading({
   );
 }
 
-function ArticleParagraph(props: ArticlePProps) {
-  return <ArticleP {...props} className={cn("pb-3", props.className)} />;
+function ArticleParagraph({ className, ...props }: ArticlePProps) {
+  return <ArticleP {...props} className={cn("pb-3", className)} />;
 }
 
 type ArticleTaskProps = ArticleLiProps & {
   checked?: boolean;
 };
-function ArticleTask({ checked = false, ...props }: ArticleTaskProps) {
+function ArticleTask({
+  className,
+  checked = false,
+  ...props
+}: ArticleTaskProps) {
   return (
     <ArticleLi
       {...props}
       className={cn(
         "flex items-center gap-2",
         checked && "text-muted-foreground line-through",
-        props.className,
+        className,
       )}
     >
       <ArticleTaskCheckbox checked={checked} />
@@ -441,7 +376,6 @@ export {
   ArticleSub as Sub,
   ArticleSuper as Sup,
   ArticleUnderline as Underline,
-  ArticleTextStyle as TextStyle,
   ArticleOl as Ol,
   ArticleUl as Ul,
   ArticleLi as Li,

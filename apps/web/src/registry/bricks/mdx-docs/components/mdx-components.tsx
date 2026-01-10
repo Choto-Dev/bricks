@@ -20,19 +20,19 @@ const defaultMdxComponents: MDXComponents = {
   em: Article.Italic,
   h1: Article.Title,
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <Article.Heading headingLevel="level-1" {...props} />
+    <Article.Heading headingLevel="1" {...props} />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <Article.Heading headingLevel="level-2" {...props} />
+    <Article.Heading headingLevel="2" {...props} />
   ),
   h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <Article.Heading headingLevel="level-3" {...props} />
+    <Article.Heading headingLevel="3" {...props} />
   ),
   h5: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <Article.Heading headingLevel="level-4" {...props} />
+    <Article.Heading headingLevel="4" {...props} />
   ),
   h6: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <Article.Heading headingLevel="level-5" {...props} />
+    <Article.Heading headingLevel="5" {...props} />
   ),
   Hr: Article.Hr,
   img: (props: ImageProps) => <Image {...props} />,
