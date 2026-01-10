@@ -2,6 +2,7 @@ import type React from "react";
 import { ArticleDemo0 } from "./_components/article-demo";
 import { FlipCardDemo0 } from "./_components/flip-card-demo";
 import { GsapDemo0 } from "./_components/gsap-demo";
+import { HeaderDemo0 } from "./_components/header-demo";
 import { SectionDemo0 } from "./_components/section-demo";
 
 type TConponents = {
@@ -44,6 +45,16 @@ export const componentDemos: Record<string, TConponents> = {
       },
     ],
     url: "/components/gsap",
+  },
+  header: {
+    name: "Header",
+    demos: [
+      {
+        name: "Demo 01",
+        component: HeaderDemo0,
+      },
+    ],
+    url: "/components/header",
   },
   section: {
     name: "Section",
