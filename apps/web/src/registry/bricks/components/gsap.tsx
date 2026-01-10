@@ -3,7 +3,7 @@
 import { useGSAP } from "@gsap/react";
 import { Slot } from "@radix-ui/react-slot";
 import gsap from "gsap";
-import { SplitText } from "gsap/all";
+import { ScrollTrigger, SplitText } from "gsap/all";
 import { Pause, Play, RotateCw } from "lucide-react";
 import React, { use } from "react";
 import { Button } from "@/components/ui/button";
@@ -15,7 +15,7 @@ function useGsapContext() {
   return use(GsapContext);
 }
 
-gsap.registerPlugin(SplitText);
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
 
 function GsapRoot({ children }: { children: React.ReactNode }) {
   const value = { tl: gsap.timeline() };
@@ -32,12 +32,14 @@ type TApplyPreset = {
 type GsapSplitTextProps = React.ComponentPropsWithRef<"div"> & {
   asChild?: boolean;
   loop?: boolean;
+  activateOnScroll?: "default" | "everytime" | "scroll-down";
   preset?: TSplitTextPresets;
 };
 function GsapSplitText({
   asChild = false,
   loop = false,
   preset = "bottom-up",
+  activateOnScroll = "default",
   ...props
 }: GsapSplitTextProps) {
   const ctx = useGsapContext();
@@ -49,14 +51,36 @@ function GsapSplitText({
   const ref = React.useRef<HTMLDivElement | null>(null);
   const presetOption = applyPreset(preset);
 
+  let toggleActionScript: string;
+  switch (activateOnScroll) {
+    case "default":
+      toggleActionScript = "play none none none";
+      break;
+    case "everytime":
+      toggleActionScript = "play reverse play reverse";
+      break;
+    case "scroll-down":
+      toggleActionScript = "play none none reverse";
+      break;
+    default:
+      toggleActionScript = "play none none none";
+      break;
+  }
+
   useGSAP(() => {
     const splitText = SplitText.create(ref.current, presetOption.splitText);
     ctx.tl.repeat(loop ? -1 : 0);
+    ScrollTrigger.create({
+      animation: ctx.tl,
+      trigger: ref.current,
+      start: "+=100 bottom",
+      toggleActions: toggleActionScript,
+    });
     ctx.tl.fromTo(splitText.chars, presetOption.from, presetOption.to);
   });
 
   const Comp = asChild ? Slot : "div";
-  return <Comp ref={ref} {...props} />;
+  return <Comp ref={ref} {...props} className="h-fit" />;
 }
 function applyPreset(preset: TSplitTextPresets): TApplyPreset {
   const presets: Record<TSplitTextPresets, TApplyPreset> = {
