@@ -4,6 +4,14 @@
  * 2. create loading components
  * 3. create not found components
  * 4. create better ui (such as, mobile, desktop, laptop and web mockup)
+ * 5. create dev editor to
+ *    - edit site configs
+ *    - add and upload fabicon
+ *    - add custom styles
+ *    - install components (maybe)
+ *    - edit mdx (maybe)
+ *    - implement cms (maybe)
+ *    - fullsite editing (maybe)
  */
 
 import * as Gsap from "@/registry/bricks/components/gsap";
